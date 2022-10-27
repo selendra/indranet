@@ -1,4 +1,4 @@
-# indranet
+# Indranet
 
-**Indranet** is native parachain that run along side with **Selendra**. 
-Indranet create for support smart conract both EVM and WASM.
+**Indranet** is native parallel blockchain of Selendra or parachain that run along side with the **Selendra Network**. 
+Indranet supports both EVM and WASM smart conract.
