@@ -1,5 +1,7 @@
 [workspace]
-members = []
+members = [
+	"primitives"
+]
 
 [profile.release]
 # Astar runtime requires unwinding.
