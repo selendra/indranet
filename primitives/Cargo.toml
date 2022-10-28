@@ -3,10 +3,6 @@ name = "indranet-primitive"
 version = "1.0.0"
 authors = ["Selendra <info@selendra.org>"]
 edition = "2021"
-description = "Logic which is common to all parachain runtimes"
-
-[package.metadata.docs.rs]
-targets = ["x86_64-unknown-linux-gnu"]
 
 [dependencies]
 sp-consensus-aura = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.26", default-features = false }
