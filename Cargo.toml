@@ -2,11 +2,11 @@
 members = [
 	"primitives",
 	"runtimes/common",
-	"runtimes/indranet"
+	"runtimes/indranet",
 ]
 
 [profile.release]
-# Astar runtime requires unwinding.
+# Selendra runtime requires unwinding.
 panic = "unwind"
 
 [profile.production]

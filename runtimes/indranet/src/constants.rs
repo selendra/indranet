@@ -75,7 +75,7 @@ pub mod fee {
 	impl WeightToFeePolynomial for WeightToFee {
 		type Balance = Balance;
 		fn polynomial() -> WeightToFeeCoefficients<Self::Balance> {
-			// in Kusama, extrinsic base weight (smallest non-zero weight) is mapped to 1/10 CENT:
+			// in Selendra, extrinsic base weight (smallest non-zero weight) is mapped to 1/10 CENT:
 			// in Indranet, we map to 1/10 of that, or 1/100 CENT
 			let p = super::currency::CENTS;
 			let q = 100 * Balance::from(ExtrinsicBaseWeight::get());
