@@ -19,6 +19,8 @@ use frame_support::{
 	ConsensusEngineId,
 };
 
+pub type Precompiles = SelendraPrecompiles<Runtime>;
+
 /// Current approximation of the gas/s consumption considering
 /// EVM execution over compiled WASM (on 4.4Ghz CPU).
 /// Given the 500ms Weight, from which 75% only are used for transactions,
@@ -63,7 +65,7 @@ parameter_types! {
 	pub BlockGasLimit: U256 = U256::from(
 		NORMAL_DISPATCH_RATIO * MAXIMUM_BLOCK_WEIGHT / WEIGHT_PER_GAS
 	);
-	pub PrecompilesValue: SelendraPrecompiles<Runtime> = SelendraPrecompiles::<_>::new();
+	pub PrecompilesValue: Precompiles = SelendraPrecompiles::<_>::new();
 	pub WeightPerGas: u64 = WEIGHT_PER_GAS;
 }
 

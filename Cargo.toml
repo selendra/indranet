@@ -1,5 +1,6 @@
 [workspace]
 members = [
+	"node",
 	"primitives",
 	"runtimes/common",
 	"runtimes/indranet",

@@ -73,7 +73,7 @@ use indranet_runtime_common::{
 	AVERAGE_ON_INITIALIZE_RATIO, MAXIMUM_BLOCK_WEIGHT, NORMAL_DISPATCH_RATIO,
 };
 
-use constants::{currency::*, fee::WeightToFee, time::*};
+pub use constants::{currency::*, fee::WeightToFee, time::*};
 use weights::{BlockExecutionWeight, ExtrinsicBaseWeight, RocksDbWeight};
 use xcm_config::{SelLocation, XcmConfig};
 
@@ -487,6 +487,11 @@ impl pallet_asset_tx_payment::Config for Runtime {
 	>;
 }
 
+impl pallet_sudo::Config for Runtime {
+	type Event = Event;
+	type Call = Call;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -534,6 +539,8 @@ construct_runtime!(
 		Ethereum: pallet_ethereum::{Pallet, Call, Storage, Event, Origin, Config}  = 61,
 		EthCall: pallet_custom_signatures::{Pallet, Call, Event<T>, ValidateUnsigned}  = 62,
 		BaseFee: pallet_base_fee::{Pallet, Call, Storage, Config<T>, Event} = 63,
+
+		Sudo: pallet_sudo::{Pallet, Call, Config<T>, Storage, Event<T>} = 99
 	}
 );
 
