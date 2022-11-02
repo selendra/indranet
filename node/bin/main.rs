@@ -19,5 +19,5 @@
 #![warn(missing_docs)]
 
 fn main() -> Result<(), sc_cli::Error> {
-    indranet_node::run()
+	indranet_node::run()
 }

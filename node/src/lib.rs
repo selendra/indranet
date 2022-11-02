@@ -19,9 +19,9 @@
 #![warn(missing_docs)]
 #![warn(unused_extern_crates)]
 
+mod cli;
 mod command;
 mod rpc;
-mod cli;
 
 /// Shell to Aura consensus upgrades.
 mod shell_upgrade;

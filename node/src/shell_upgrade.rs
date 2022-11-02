@@ -16,7 +16,6 @@
 
 ///! Special [`ParachainConsensus`] implementation that waits for the upgrade from
 ///! shell to a parachain runtime that implements Aura.
-
 use forests_client_consensus_common::{ParachainCandidate, ParachainConsensus};
 use forests_primitives_core::relay_chain::v2::{Hash as PHash, PersistedValidationData};
 use futures::lock::Mutex;
