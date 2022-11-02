@@ -32,7 +32,7 @@ use sc_service::{
 	config::{BasePath, PrometheusConfig},
 	PartialComponents,
 };
-use sp_core::hexdisplay::HexDisplay;
+use sp_core::{crypto::Ss58AddressFormat, hexdisplay::HexDisplay};
 use sp_runtime::traits::{AccountIdConversion, Block as BlockT};
 use std::net::SocketAddr;
 
@@ -46,15 +46,20 @@ fn load_spec(
 	para_id: u32,
 ) -> std::result::Result<Box<dyn sc_service::ChainSpec>, String> {
 	Ok(match id {
-		"indranet-dev" => Box::new(chain_spec::indranet::get_chain_spec(para_id)),
+		"" | "indranet-dev" => Box::new(chain_spec::indranet::get_chain_spec(para_id)),
 		"indranet" => Box::new(chain_spec::IndranetChainSpec::from_json_bytes(
-            &include_bytes!("../chain_spec/indranet.json")[..],
-        )?),
+			&include_bytes!("../chain_spec/indranet.json")[..],
+		)?),
 		path => {
 			let chain_spec = chain_spec::IndranetChainSpec::from_json_file(path.into())?;
 			Box::new(chain_spec)
 		},
 	})
+}
+
+fn set_default_ss58_version() {
+	let ss58_version = Ss58AddressFormat::custom(204);
+	sp_core::crypto::set_default_ss58_version(ss58_version);
 }
 
 impl SubstrateCli for Cli {
@@ -141,10 +146,14 @@ pub fn run() -> Result<()> {
 
 	match &cli.subcommand {
 		Some(Subcommand::BuildSpec(cmd)) => {
+			set_default_ss58_version();
+
 			let runner = cli.create_runner(cmd)?;
 			runner.sync_run(|config| cmd.run(config.chain_spec, config.network))
 		},
 		Some(Subcommand::CheckBlock(cmd)) => {
+			set_default_ss58_version();
+
 			let runner = cli.create_runner(cmd)?;
 			runner.async_run(|config| {
 				let PartialComponents { client, task_manager, import_queue, .. } =
@@ -157,6 +166,8 @@ pub fn run() -> Result<()> {
 			})
 		},
 		Some(Subcommand::ExportBlocks(cmd)) => {
+			set_default_ss58_version();
+
 			let runner = cli.create_runner(cmd)?;
 			runner.async_run(|config| {
 				let PartialComponents { client, task_manager, .. } =
@@ -169,6 +180,8 @@ pub fn run() -> Result<()> {
 			})
 		},
 		Some(Subcommand::ExportState(cmd)) => {
+			set_default_ss58_version();
+
 			let runner = cli.create_runner(cmd)?;
 			runner.async_run(|config| {
 				let PartialComponents { client, task_manager, .. } =
@@ -181,6 +194,8 @@ pub fn run() -> Result<()> {
 			})
 		},
 		Some(Subcommand::ImportBlocks(cmd)) => {
+			set_default_ss58_version();
+
 			let runner = cli.create_runner(cmd)?;
 			runner.async_run(|config| {
 				let PartialComponents { client, task_manager, import_queue, .. } =
@@ -193,6 +208,8 @@ pub fn run() -> Result<()> {
 			})
 		},
 		Some(Subcommand::PurgeChain(cmd)) => {
+			set_default_ss58_version();
+
 			let runner = cli.create_runner(cmd)?;
 			runner.sync_run(|config| {
 				let selendra_cli = RelayChainCli::new(
@@ -210,6 +227,8 @@ pub fn run() -> Result<()> {
 			})
 		},
 		Some(Subcommand::Revert(cmd)) => {
+			set_default_ss58_version();
+
 			let runner = cli.create_runner(cmd)?;
 			runner.async_run(|config| {
 				let PartialComponents { client, task_manager, backend, .. } =
@@ -226,8 +245,9 @@ pub fn run() -> Result<()> {
 			})
 		},
 		Some(Subcommand::ExportGenesisState(cmd)) => {
-			let runner = cli.create_runner(cmd)?;
+			set_default_ss58_version();
 
+			let runner = cli.create_runner(cmd)?;
 			runner.sync_run(|_config| {
 				let spec = cli.load_spec(&cmd.shared_params.chain.clone().unwrap_or_default())?;
 				let state_version = Cli::native_runtime_version(&spec).state_version();
@@ -235,8 +255,9 @@ pub fn run() -> Result<()> {
 			})
 		},
 		Some(Subcommand::ExportGenesisWasm(cmd)) => {
-			let runner = cli.create_runner(cmd)?;
+			set_default_ss58_version();
 
+			let runner = cli.create_runner(cmd)?;
 			runner.sync_run(|_config| {
 				let spec = cli.load_spec(&cmd.shared_params.chain.clone().unwrap_or_default())?;
 				cmd.run(&*spec)
@@ -282,17 +303,17 @@ pub fn run() -> Result<()> {
 		#[cfg(feature = "try-runtime")]
 		Some(Subcommand::TryRuntime(cmd)) => {
 			let runner = cli.create_runner(cmd)?;
-				runner.async_run(|config| {
-					let registry = config.prometheus_config.as_ref().map(|cfg| &cfg.registry);
-					let task_manager =
-						sc_service::TaskManager::new(config.tokio_handle.clone(), registry)
-							.map_err(|e| {
-								sc_cli::Error::Service(sc_service::Error::Prometheus(e))
-							})?;
-					Ok((cmd.run::<Block, service::indranet::Executor>(config), task_manager))
-				})
+			runner.async_run(|config| {
+				let registry = config.prometheus_config.as_ref().map(|cfg| &cfg.registry);
+				let task_manager =
+					sc_service::TaskManager::new(config.tokio_handle.clone(), registry)
+						.map_err(|e| sc_cli::Error::Service(sc_service::Error::Prometheus(e)))?;
+				Ok((cmd.run::<Block, service::indranet::Executor>(config), task_manager))
+			})
 		},
 		None => {
+			set_default_ss58_version();
+
 			let runner = cli.create_runner(&cli.run.normalize())?;
 			let collator_options = cli.run.collator_options();
 
