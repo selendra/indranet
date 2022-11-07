@@ -22,7 +22,22 @@ use forests_primitives_core::ParaId;
 use indranet_primitive::{AccountId, AuraId, Balance};
 use indranet_runtime::{evm_config::Precompiles, UNITS};
 use sc_service::ChainType;
+use sc_telemetry::TelemetryEndpoints;
 use sp_core::sr25519;
+
+const INDRANET_STAGING_TELEMETRY_URL: &str = "wss://telemetry.polkadot.io/submit/";
+const DEFAULT_PROTOCOL_ID: &str = "sel";
+
+/// Returns the properties for the [`IndranetChainSpec`].
+pub fn indranet_chain_spec_properties() -> serde_json::map::Map<String, serde_json::Value> {
+	serde_json::json!({
+		"tokenDecimals": 12,
+		"tokenSymbol": "SEL",
+	})
+	.as_object()
+	.expect("Map given; qed")
+	.clone()
+}
 
 /// Specialized `ChainSpec` for Indranet Network.
 pub type IndranetChainSpec =
@@ -33,8 +48,8 @@ pub fn get_chain_spec(para_id: u32) -> IndranetChainSpec {
 	// Alice as default
 	let sudo_key = get_account_id_from_seed::<sr25519::Public>("Alice");
 	let endowned = vec![
-		(get_account_id_from_seed::<sr25519::Public>("Alice"), 1_000_000_000 * UNITS),
-		(get_account_id_from_seed::<sr25519::Public>("Bob"), 1_000_000_000 * UNITS),
+		(get_account_id_from_seed::<sr25519::Public>("Alice"), 1_000 * UNITS),
+		(get_account_id_from_seed::<sr25519::Public>("Bob"), 1_000 * UNITS),
 	];
 
 	IndranetChainSpec::from_genesis(
@@ -43,10 +58,13 @@ pub fn get_chain_spec(para_id: u32) -> IndranetChainSpec {
 		ChainType::Development,
 		move || make_genesis(endowned.clone(), sudo_key.clone(), para_id.into()),
 		vec![],
+		Some(
+			TelemetryEndpoints::new(vec![(INDRANET_STAGING_TELEMETRY_URL.to_string(), 0)])
+				.expect("Selendra Staging telemetry url is valid; qed"),
+		),
+		Some(DEFAULT_PROTOCOL_ID),
 		None,
-		None,
-		None,
-		None,
+		Some(indranet_chain_spec_properties()),
 		Extensions { bad_blocks: Default::default(), relay_chain: "selendra".into(), para_id },
 	)
 }

@@ -50,6 +50,9 @@ fn load_spec(
 		"indranet" => Box::new(chain_spec::IndranetChainSpec::from_json_bytes(
 			&include_bytes!("../chain_spec/indranet.json")[..],
 		)?),
+		"testnet" => Box::new(chain_spec::IndranetChainSpec::from_json_bytes(
+			&include_bytes!("../chain_spec/testnet.json")[..],
+		)?),
 		path => {
 			let chain_spec = chain_spec::IndranetChainSpec::from_json_file(path.into())?;
 			Box::new(chain_spec)
