@@ -298,9 +298,13 @@ pub fn run() -> Result<()> {
 
 					cmd.run(config, params.client, db, storage)
 				}),
-				BenchmarkCmd::Overhead(_) => Err("Benchmark overhead not supported.".into()),
+				BenchmarkCmd::Extrinsic(_) => Err("Benchmark extrinsic not supported.".into()),
 				BenchmarkCmd::Machine(cmd) =>
 					runner.sync_run(|config| cmd.run(&config, SUBSTRATE_REFERENCE_HARDWARE.clone())),
+				// NOTE: this allows the Client to leniently implement
+				// new benchmark commands without requiring a companion MR.
+				#[allow(unreachable_patterns)]
+				_ => Err("Benchmarking sub-command unsupported".into()),
 			}
 		},
 		#[cfg(feature = "try-runtime")]
@@ -451,8 +455,8 @@ impl CliConfiguration<Self> for RelayChainCli {
 		self.base.base.role(is_dev)
 	}
 
-	fn transaction_pool(&self) -> Result<sc_service::config::TransactionPoolOptions> {
-		self.base.base.transaction_pool()
+	fn transaction_pool(&self, is_dev: bool) -> Result<sc_service::config::TransactionPoolOptions> {
+		self.base.base.transaction_pool(is_dev)
 	}
 
 	fn state_cache_child_ratio(&self) -> Result<Option<usize>> {
