@@ -25,7 +25,7 @@ precompile-utils = { path = "../utils", default-features = false }
 derive_more = "0.99"
 hex-literal = "0.3.4"
 scale-info = "2.0"
-serde = "1.0.100"
+serde = "1.0.140"
 
 frame-support = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
 frame-system = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
