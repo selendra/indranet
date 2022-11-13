@@ -31,7 +31,7 @@ const DEFAULT_PROTOCOL_ID: &str = "sel";
 /// Returns the properties for the [`IndranetChainSpec`].
 pub fn indranet_chain_spec_properties() -> serde_json::map::Map<String, serde_json::Value> {
 	serde_json::json!({
-		"tokenDecimals": 12,
+		"tokenDecimals": 18,
 		"tokenSymbol": "SEL",
 	})
 	.as_object()

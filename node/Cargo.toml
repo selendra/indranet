@@ -75,23 +75,23 @@ substrate-frame-rpc-system = { version = "4.0.0-dev", git = "https://github.com/
 substrate-prometheus-endpoint = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
 
 # forests dependencies
-forests-client-cli = { git = "https://github.com/selendra/selendra", branch = "development" }
-forests-client-consensus-aura = { git = "https://github.com/selendra/selendra", branch = "development" }
-forests-client-consensus-common = { git = "https://github.com/selendra/selendra", branch = "development" }
-forests-client-consensus-relay-chain = { git = "https://github.com/selendra/selendra", branch = "development" }
-forests-client-network = { git = "https://github.com/selendra/selendra", branch = "development" }
-forests-client-service = { git = "https://github.com/selendra/selendra", branch = "development" }
-forests-primitives-core = { git = "https://github.com/selendra/selendra", branch = "development" }
-forests-primitives-parachain-inherent = { git = "https://github.com/selendra/selendra", branch = "development" }
-forests-relay-chain-inprocess-interface = { git = "https://github.com/selendra/selendra", branch = "development" }
-forests-relay-chain-interface = { git = "https://github.com/selendra/selendra", branch = "development" }
-forests-relay-chain-rpc-interface = { git = "https://github.com/selendra/selendra", branch = "development" }
+forests-client-cli = { git = "https://github.com/selendra/selendra", tag = "0.2.1" }
+forests-client-consensus-aura = { git = "https://github.com/selendra/selendra", tag = "0.2.1" }
+forests-client-consensus-common = { git = "https://github.com/selendra/selendra", tag = "0.2.1" }
+forests-client-consensus-relay-chain = { git = "https://github.com/selendra/selendra", tag = "0.2.1" }
+forests-client-network = { git = "https://github.com/selendra/selendra", tag = "0.2.1" }
+forests-client-service = { git = "https://github.com/selendra/selendra", tag = "0.2.1" }
+forests-primitives-core = { git = "https://github.com/selendra/selendra", tag = "0.2.1" }
+forests-primitives-parachain-inherent = { git = "https://github.com/selendra/selendra", tag = "0.2.1" }
+forests-relay-chain-inprocess-interface = { git = "https://github.com/selendra/selendra", tag = "0.2.1" }
+forests-relay-chain-interface = { git = "https://github.com/selendra/selendra", tag = "0.2.1" }
+forests-relay-chain-rpc-interface = { git = "https://github.com/selendra/selendra", tag = "0.2.1" }
 
 # selendra dependencies
-selendra-cli = { git = "https://github.com/selendra/selendra", branch = "development", optional = true }
-selendra-parachain = { git = "https://github.com/selendra/selendra", branch = "development" }
-selendra-primitives = { git = "https://github.com/selendra/selendra", branch = "development" }
-selendra-service = { git = "https://github.com/selendra/selendra", branch = "development" }
+selendra-cli = { git = "https://github.com/selendra/selendra", tag = "0.2.1", optional = true }
+selendra-parachain = { git = "https://github.com/selendra/selendra", tag = "0.2.1" }
+selendra-primitives = { git = "https://github.com/selendra/selendra", tag = "0.2.1" }
+selendra-service = { git = "https://github.com/selendra/selendra", tag = "0.2.1" }
 
 # Frontier dependencies
 fc-consensus = { git = "https://github.com/selendra/frontier", branch = "polkadot-v0.9.27" }
@@ -114,7 +114,7 @@ indranet-primitive = { path = "../primitives" }
 sc-cli = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27", optional = true }
 sc-service = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27", optional = true }
 build-script-utils = { package = "substrate-build-script-utils", git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.27" }
-selendra-cli = { git = "https://github.com/selendra/selendra", branch = "development", optional = true }
+selendra-cli = { git = "https://github.com/selendra/selendra", tag = "0.2.1", optional = true }
 
 [features]
 default = ["sc-cli", "selendra-cli", "sc-service", "sc-service/rocksdb"]
