@@ -2,8 +2,8 @@
 members = [
 	"node",
 	"primitives",
-	"runtimes/common",
-	"runtimes/indranet",
+	"runtime/common",
+	"runtime/indranet",
 ]
 
 [profile.release]

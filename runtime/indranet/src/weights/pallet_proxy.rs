@@ -31,7 +31,7 @@
 // --steps=50
 // --repeat=20
 // --json-file=./bench-indranet.json
-// --output=./runtimes/indranet/src/weights
+// --output=./runtime/indranet/src/weights
 
 #![cfg_attr(rustfmt, rustfmt_skip)]
 #![allow(unused_parens)]

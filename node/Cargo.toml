@@ -107,7 +107,7 @@ pallet-ethereum = { git = "https://github.com/selendra/frontier", branch = "polk
 pallet-evm = { git = "https://github.com/selendra/frontier", branch = "polkadot-v0.9.27" }
 
 # indranet-specific dependencies
-indranet-runtime = { path = "../runtimes/indranet" }
+indranet-runtime = { path = "../runtime/indranet" }
 indranet-primitive = { path = "../primitives" }
 
 [build-dependencies]
