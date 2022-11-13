@@ -88,10 +88,10 @@ pub const VERSION: RuntimeVersion = RuntimeVersion {
 	spec_name: create_runtime_str!("indranet"),
 	impl_name: create_runtime_str!("indranet"),
 	authoring_version: 1,
-	spec_version: 10001,
+	spec_version: 1001,
 	impl_version: 0,
 	apis: RUNTIME_API_VERSIONS,
-	transaction_version: 6,
+	transaction_version: 1,
 	state_version: 0,
 };
 
