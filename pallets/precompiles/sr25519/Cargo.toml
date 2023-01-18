@@ -1,6 +1,6 @@
 [package]
 name = "pallet-evm-precompile-sr25519"
-version = "0.1.0"
+version = "0.1.2"
 authors = ["Selendra <info@selendra.org>"]
 description = "SR25519 crypto support for EVM."
 edition = "2021"

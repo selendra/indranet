@@ -1,6 +1,6 @@
 [package]
 name = "pallet-evm-precompile-substrate-ecdsa"
-version = "0.1.0"
+version = "0.1.2"
 authors = ["Selendra <info@selendra.org>"]
 description = "Substrate ECDSA crypto support for EVM."
 edition = "2021"

@@ -1,6 +1,6 @@
 [package]
 name = "precompile-utils-macro"
-version = "0.1.0"
+version = "0.1.2"
 authors = ["Selendra <info@selendra.org>"]
 edition = "2018"
 

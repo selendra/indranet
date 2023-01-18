@@ -1,6 +1,6 @@
 [package]
 name = "precompile-utils"
-version = "0.1.0"
+version = "0.1.2"
 authors = ["Selendra <info@selendra.org>"]
 description = "Utils to write EVM precompiles."
 edition = "2021"

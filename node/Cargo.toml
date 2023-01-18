@@ -1,6 +1,6 @@
 [package]
 name = "indranet-node"
-version = "0.1.0"
+version = "0.1.2"
 authors = ["Selendra <info@selendra.org>"]
 description = "Indranet collator implementation in Rust."
 build = "build.rs"
