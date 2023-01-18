@@ -132,8 +132,7 @@ fn make_genesis(
 		},
 		base_fee: indranet_runtime::BaseFeeConfig::new(
 			sp_core::U256::from(1_000_000_000),
-			false,
-			sp_runtime::Permill::from_parts(125_000),
+			sp_runtime::Permill::zero(),
 		),
 		ethereum: Default::default(),
 		selendra_xcm: Default::default(),
