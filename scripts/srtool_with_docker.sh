@@ -1,1 +1,1 @@
-docker run --user root --rm --name srtool -e PACKAGE=indranet-runtime -e BUILD_OPTS= -e DEFAULT_FEATURES= -e PROFILE=production -v /home/nath/Project/indranet:/build -v /tmp/cargo:/cargo-home paritytech/srtool:1.62.0 build
+docker run --user root --rm --name srtool -e PACKAGE=indranet-runtime -e BUILD_OPTS= -e DEFAULT_FEATURES= -e PROFILE=production -v /home/nath/Projects/indranet:/build -v /tmp/cargo:/cargo-home paritytech/srtool:1.66.1 build
