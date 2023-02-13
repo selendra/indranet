@@ -112,7 +112,7 @@ impl pallet_custom_signatures::Config for Runtime {
 
 parameter_types! {
 	pub DefaultBaseFeePerGas: U256 = (MILLICENTS / 1_000_000).into();
-	 // At the moment, we don't use dynamic fee calculation for Astar by default
+	 // At the moment, we don't use dynamic fee calculation for Indranet by default
 	 pub DefaultElasticity: Permill = Permill::zero();
 }
 
