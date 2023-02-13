@@ -24,12 +24,12 @@ use scale_info::TypeInfo;
 use serde::{Deserialize, Serialize};
 
 use pallet_evm::{
-    AddressMapping, EnsureAddressNever, EnsureAddressRoot, PrecompileResult, PrecompileSet,
+	AddressMapping, EnsureAddressNever, EnsureAddressRoot, PrecompileResult, PrecompileSet,
 };
 use sp_core::{H160, H256};
 use sp_runtime::{
-    testing::Header,
-    traits::{BlakeTwo256, IdentityLookup},
+	testing::Header,
+	traits::{BlakeTwo256, IdentityLookup},
 };
 
 pub type AccountId = TestAccount;
@@ -41,105 +41,105 @@ pub type Block = frame_system::mocking::MockBlock<Runtime>;
 pub const PRECOMPILE_ADDRESS: H160 = H160::repeat_byte(0x7B);
 
 #[derive(
-    Eq,
-    PartialEq,
-    Ord,
-    PartialOrd,
-    Clone,
-    Encode,
-    Decode,
-    Debug,
-    MaxEncodedLen,
-    Serialize,
-    Deserialize,
-    derive_more::Display,
-    TypeInfo,
+	Eq,
+	PartialEq,
+	Ord,
+	PartialOrd,
+	Clone,
+	Encode,
+	Decode,
+	Debug,
+	MaxEncodedLen,
+	Serialize,
+	Deserialize,
+	derive_more::Display,
+	TypeInfo,
 )]
 pub enum TestAccount {
-    Alice,
-    Bob,
-    Charlie,
-    Bogus,
-    Precompile,
+	Alice,
+	Bob,
+	Charlie,
+	Bogus,
+	Precompile,
 }
 
 impl Default for TestAccount {
-    fn default() -> Self {
-        Self::Alice
-    }
+	fn default() -> Self {
+		Self::Alice
+	}
 }
 
 impl AddressMapping<TestAccount> for TestAccount {
-    fn into_account_id(h160_account: H160) -> TestAccount {
-        match h160_account {
-            a if a == H160::repeat_byte(0xAA) => Self::Alice,
-            a if a == H160::repeat_byte(0xBB) => Self::Bob,
-            a if a == H160::repeat_byte(0xCC) => Self::Charlie,
-            a if a == PRECOMPILE_ADDRESS => Self::Precompile,
-            _ => Self::Bogus,
-        }
-    }
+	fn into_account_id(h160_account: H160) -> TestAccount {
+		match h160_account {
+			a if a == H160::repeat_byte(0xAA) => Self::Alice,
+			a if a == H160::repeat_byte(0xBB) => Self::Bob,
+			a if a == H160::repeat_byte(0xCC) => Self::Charlie,
+			a if a == PRECOMPILE_ADDRESS => Self::Precompile,
+			_ => Self::Bogus,
+		}
+	}
 }
 
 impl From<H160> for TestAccount {
-    fn from(x: H160) -> TestAccount {
-        TestAccount::into_account_id(x)
-    }
+	fn from(x: H160) -> TestAccount {
+		TestAccount::into_account_id(x)
+	}
 }
 
 impl From<TestAccount> for H160 {
-    fn from(value: TestAccount) -> H160 {
-        match value {
-            TestAccount::Alice => H160::repeat_byte(0xAA),
-            TestAccount::Bob => H160::repeat_byte(0xBB),
-            TestAccount::Charlie => H160::repeat_byte(0xCC),
-            TestAccount::Precompile => PRECOMPILE_ADDRESS,
-            TestAccount::Bogus => Default::default(),
-        }
-    }
+	fn from(value: TestAccount) -> H160 {
+		match value {
+			TestAccount::Alice => H160::repeat_byte(0xAA),
+			TestAccount::Bob => H160::repeat_byte(0xBB),
+			TestAccount::Charlie => H160::repeat_byte(0xCC),
+			TestAccount::Precompile => PRECOMPILE_ADDRESS,
+			TestAccount::Bogus => Default::default(),
+		}
+	}
 }
 
 impl From<TestAccount> for [u8; 32] {
-    fn from(value: TestAccount) -> [u8; 32] {
-        match value {
-            TestAccount::Alice => [0xAA; 32],
-            TestAccount::Bob => [0xBB; 32],
-            TestAccount::Charlie => [0xCC; 32],
-            _ => Default::default(),
-        }
-    }
+	fn from(value: TestAccount) -> [u8; 32] {
+		match value {
+			TestAccount::Alice => [0xAA; 32],
+			TestAccount::Bob => [0xBB; 32],
+			TestAccount::Charlie => [0xCC; 32],
+			_ => Default::default(),
+		}
+	}
 }
 
 parameter_types! {
-    pub const BlockHashCount: u64 = 250;
-    pub const SS58Prefix: u8 = 42;
+	pub const BlockHashCount: u64 = 250;
+	pub const SS58Prefix: u8 = 42;
 }
 
 impl frame_system::Config for Runtime {
-    type BaseCallFilter = Everything;
-    type DbWeight = ();
-    type RuntimeOrigin = RuntimeOrigin;
-    type Index = u64;
-    type BlockNumber = BlockNumber;
-    type RuntimeCall = RuntimeCall;
-    type Hash = H256;
-    type Hashing = BlakeTwo256;
-    type AccountId = AccountId;
-    type Lookup = IdentityLookup<Self::AccountId>;
-    type Header = Header;
-    type RuntimeEvent = RuntimeEvent;
-    type BlockHashCount = BlockHashCount;
-    type Version = ();
-    type PalletInfo = PalletInfo;
-    type AccountData = pallet_balances::AccountData<Balance>;
-    type OnNewAccount = ();
-    type OnKilledAccount = ();
-    type SystemWeightInfo = ();
-    type BlockWeights = ();
-    type BlockLength = ();
-    type SS58Prefix = SS58Prefix;
-    type OnSetCode = ();
-    type MaxConsumers = frame_support::traits::ConstU32<16>;
+	type BaseCallFilter = Everything;
+	type DbWeight = ();
+	type RuntimeOrigin = RuntimeOrigin;
+	type Index = u64;
+	type BlockNumber = BlockNumber;
+	type RuntimeCall = RuntimeCall;
+	type Hash = H256;
+	type Hashing = BlakeTwo256;
+	type AccountId = AccountId;
+	type Lookup = IdentityLookup<Self::AccountId>;
+	type Header = Header;
+	type RuntimeEvent = RuntimeEvent;
+	type BlockHashCount = BlockHashCount;
+	type Version = ();
+	type PalletInfo = PalletInfo;
+	type AccountData = pallet_balances::AccountData<Balance>;
+	type OnNewAccount = ();
+	type OnKilledAccount = ();
+	type SystemWeightInfo = ();
+	type BlockWeights = ();
+	type BlockLength = ();
+	type SS58Prefix = SS58Prefix;
+	type OnSetCode = ();
+	type MaxConsumers = frame_support::traits::ConstU32<16>;
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -147,105 +147,105 @@ pub struct TestPrecompileSet<R>(PhantomData<R>);
 
 impl<R> PrecompileSet for TestPrecompileSet<R>
 where
-    R: pallet_evm::Config + pallet_xvm::Config,
-    XvmPrecompile<R>: Precompile,
+	R: pallet_evm::Config + pallet_xvm::Config,
+	XvmPrecompile<R>: Precompile,
 {
-    fn execute(&self, handle: &mut impl PrecompileHandle) -> Option<PrecompileResult> {
-        match handle.code_address() {
-            a if a == PRECOMPILE_ADDRESS => Some(XvmPrecompile::<R>::execute(handle)),
-            _ => None,
-        }
-    }
+	fn execute(&self, handle: &mut impl PrecompileHandle) -> Option<PrecompileResult> {
+		match handle.code_address() {
+			a if a == PRECOMPILE_ADDRESS => Some(XvmPrecompile::<R>::execute(handle)),
+			_ => None,
+		}
+	}
 
-    fn is_precompile(&self, address: H160) -> bool {
-        address == PRECOMPILE_ADDRESS
-    }
+	fn is_precompile(&self, address: H160) -> bool {
+		address == PRECOMPILE_ADDRESS
+	}
 }
 
 parameter_types! {
-    pub const MinimumPeriod: u64 = 5;
+	pub const MinimumPeriod: u64 = 5;
 }
 
 impl pallet_timestamp::Config for Runtime {
-    type Moment = u64;
-    type OnTimestampSet = ();
-    type MinimumPeriod = MinimumPeriod;
-    type WeightInfo = ();
+	type Moment = u64;
+	type OnTimestampSet = ();
+	type MinimumPeriod = MinimumPeriod;
+	type WeightInfo = ();
 }
 
 parameter_types! {
-    pub const ExistentialDeposit: u128 = 0;
+	pub const ExistentialDeposit: u128 = 0;
 }
 
 impl pallet_balances::Config for Runtime {
-    type MaxReserves = ();
-    type ReserveIdentifier = ();
-    type MaxLocks = ();
-    type Balance = Balance;
-    type RuntimeEvent = RuntimeEvent;
-    type DustRemoval = ();
-    type ExistentialDeposit = ExistentialDeposit;
-    type AccountStore = System;
-    type WeightInfo = ();
+	type MaxReserves = ();
+	type ReserveIdentifier = ();
+	type MaxLocks = ();
+	type Balance = Balance;
+	type RuntimeEvent = RuntimeEvent;
+	type DustRemoval = ();
+	type ExistentialDeposit = ExistentialDeposit;
+	type AccountStore = System;
+	type WeightInfo = ();
 }
 
 parameter_types! {
-    pub const PrecompilesValue: TestPrecompileSet<Runtime> =
-        TestPrecompileSet(PhantomData);
-    pub WeightPerGas: u64 = 1;
+	pub const PrecompilesValue: TestPrecompileSet<Runtime> =
+		TestPrecompileSet(PhantomData);
+	pub WeightPerGas: u64 = 1;
 }
 
 impl pallet_evm::Config for Runtime {
-    type FeeCalculator = ();
-    type GasWeightMapping = pallet_evm::FixedGasWeightMapping<Self>;
-    type WeightPerGas = WeightPerGas;
-    type CallOrigin = EnsureAddressRoot<AccountId>;
-    type WithdrawOrigin = EnsureAddressNever<AccountId>;
-    type AddressMapping = AccountId;
-    type Currency = Balances;
-    type RuntimeEvent = RuntimeEvent;
-    type Runner = pallet_evm::runner::stack::Runner<Self>;
-    type PrecompilesType = TestPrecompileSet<Self>;
-    type PrecompilesValue = PrecompilesValue;
-    type ChainId = ();
-    type OnChargeTransaction = ();
-    type BlockGasLimit = ();
-    type BlockHashMapping = pallet_evm::SubstrateBlockHashMapping<Self>;
-    type FindAuthor = ();
+	type FeeCalculator = ();
+	type GasWeightMapping = pallet_evm::FixedGasWeightMapping<Self>;
+	type WeightPerGas = WeightPerGas;
+	type CallOrigin = EnsureAddressRoot<AccountId>;
+	type WithdrawOrigin = EnsureAddressNever<AccountId>;
+	type AddressMapping = AccountId;
+	type Currency = Balances;
+	type RuntimeEvent = RuntimeEvent;
+	type Runner = pallet_evm::runner::stack::Runner<Self>;
+	type PrecompilesType = TestPrecompileSet<Self>;
+	type PrecompilesValue = PrecompilesValue;
+	type ChainId = ();
+	type OnChargeTransaction = ();
+	type BlockGasLimit = ();
+	type BlockHashMapping = pallet_evm::SubstrateBlockHashMapping<Self>;
+	type FindAuthor = ();
 }
 
 impl pallet_xvm::Config for Runtime {
-    type RuntimeEvent = RuntimeEvent;
-    type SyncVM = ();
-    type AsyncVM = ();
+	type RuntimeEvent = RuntimeEvent;
+	type SyncVM = ();
+	type AsyncVM = ();
 }
 
 // Configure a mock runtime to test the pallet.
 construct_runtime!(
-    pub enum Runtime where
-        Block = Block,
-        NodeBlock = Block,
-        UncheckedExtrinsic = UncheckedExtrinsic,
-    {
-        System: frame_system,
-        Balances: pallet_balances,
-        Evm: pallet_evm,
-        Timestamp: pallet_timestamp,
-        Xvm: pallet_xvm,
-    }
+	pub enum Runtime where
+		Block = Block,
+		NodeBlock = Block,
+		UncheckedExtrinsic = UncheckedExtrinsic,
+	{
+		System: frame_system,
+		Balances: pallet_balances,
+		Evm: pallet_evm,
+		Timestamp: pallet_timestamp,
+		Xvm: pallet_xvm,
+	}
 );
 
 #[derive(Default)]
 pub(crate) struct ExtBuilder;
 
 impl ExtBuilder {
-    pub(crate) fn build(self) -> sp_io::TestExternalities {
-        let t = frame_system::GenesisConfig::default()
-            .build_storage::<Runtime>()
-            .expect("Frame system builds valid default genesis config");
+	pub(crate) fn build(self) -> sp_io::TestExternalities {
+		let t = frame_system::GenesisConfig::default()
+			.build_storage::<Runtime>()
+			.expect("Frame system builds valid default genesis config");
 
-        let mut ext = sp_io::TestExternalities::new(t);
-        ext.execute_with(|| System::set_block_number(1));
-        ext
-    }
+		let mut ext = sp_io::TestExternalities::new(t);
+		ext.execute_with(|| System::set_block_number(1));
+		ext
+	}
 }

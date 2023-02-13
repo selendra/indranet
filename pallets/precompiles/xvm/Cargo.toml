@@ -1,14 +1,14 @@
 [package]
 name = "pallet-evm-precompile-xvm"
 version = "0.2.0"
-authors = ["Selendra <info@selendra>"]
+authors = ["Selendra <info@selendra.org>"]
 edition = "2021"
 description = "Cross-VM call support for EVM."
 
 [dependencies]
 log = "0.4.16"
 num_enum = { version = "0.5.3", default-features = false }
-pallet-xvm = { path = "../../frame/pallet-xvm", default-features = false }
+pallet-xvm = { path = "../../pallet-xvm", default-features = false }
 precompile-utils = { path = "../utils", default-features = false }
 
 # Substrate

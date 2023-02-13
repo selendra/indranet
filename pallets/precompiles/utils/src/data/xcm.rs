@@ -47,7 +47,7 @@ pub(crate) fn network_id_to_bytes(network_id: NetworkId) -> Vec<u8> {
 		NetworkId::Selendra => {
 			encoded.push(2u8);
 			encoded
-		}
+		},
 	}
 }
 

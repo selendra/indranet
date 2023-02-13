@@ -32,6 +32,8 @@ xcm = { git = "https://github.com/selendra/selendra", tag = "0.2.4", default-fea
 xcm-executor = { git = "https://github.com/selendra/selendra", tag = "0.2.4", default-features = false }
 pallet-collator-selection = { git = "https://github.com/selendra/selendra", tag = "0.2.4", default-features = false }
 
+forests-primitives-utility = { git = "https://github.com/selendra/selendra", tag = "0.2.4", default-features = false }
+
 [dev-dependencies]
 pallet-authorship = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.30", default-features = false }
 sp-io = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.30", default-features = false }

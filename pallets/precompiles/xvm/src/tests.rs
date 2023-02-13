@@ -14,63 +14,59 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 
-use crate::mock::*;
-use crate::*;
+use crate::{mock::*, *};
 
 use codec::Encode;
-use precompile_utils::testing::*;
-use precompile_utils::EvmDataWriter;
+use precompile_utils::{testing::*, EvmDataWriter};
 
 fn precompiles() -> TestPrecompileSet<Runtime> {
-    PrecompilesValue::get()
+	PrecompilesValue::get()
 }
 
 #[test]
 fn wrong_argument_reverts() {
-    ExtBuilder::default().build().execute_with(|| {
-        precompiles()
-            .prepare_test(
-                TestAccount::Alice,
-                PRECOMPILE_ADDRESS,
-                EvmDataWriter::new_with_selector(Action::XvmCall)
-                    .write(42u64)
-                    .build(),
-            )
-            .expect_no_logs()
-            .execute_reverts(|output| output == b"input doesn't match expected length");
+	ExtBuilder::default().build().execute_with(|| {
+		precompiles()
+			.prepare_test(
+				TestAccount::Alice,
+				PRECOMPILE_ADDRESS,
+				EvmDataWriter::new_with_selector(Action::XvmCall).write(42u64).build(),
+			)
+			.expect_no_logs()
+			.execute_reverts(|output| output == b"input doesn't match expected length");
 
-        precompiles()
-            .prepare_test(
-                TestAccount::Alice,
-                PRECOMPILE_ADDRESS,
-                EvmDataWriter::new_with_selector(Action::XvmCall)
-                    .write(0u8)
-                    .write(Bytes(b"".to_vec()))
-                    .write(Bytes(b"".to_vec()))
-                    .write(Bytes(b"".to_vec()))
-                    .build(),
-            )
-            .expect_no_logs()
-            .execute_reverts(|output| output == b"can not decode XVM context");
-    })
+		precompiles()
+			.prepare_test(
+				TestAccount::Alice,
+				PRECOMPILE_ADDRESS,
+				EvmDataWriter::new_with_selector(Action::XvmCall)
+					.write(0u8)
+					.write(Bytes(b"".to_vec()))
+					.write(Bytes(b"".to_vec()))
+					.write(Bytes(b"".to_vec()))
+					.build(),
+			)
+			.expect_no_logs()
+			.execute_reverts(|output| output == b"can not decode XVM context");
+	})
 }
 
 #[test]
 fn correct_arguments_works() {
-    let context: XvmContext = Default::default();
-    ExtBuilder::default().build().execute_with(|| {
-        precompiles()
-            .prepare_test(
-                TestAccount::Alice,
-                PRECOMPILE_ADDRESS,
-                EvmDataWriter::new_with_selector(Action::XvmCall)
-                    .write(Bytes(context.encode()))
-                    .write(Bytes(b"".to_vec()))
-                    .write(Bytes(b"".to_vec()))
-                    .write(Bytes(b"".to_vec()))
-                    .build(),
-            )
-            .expect_no_logs()
-            .execute_returns(EvmDataWriter::new().write(true).build());
-    })
+	let context: XvmContext = Default::default();
+	ExtBuilder::default().build().execute_with(|| {
+		precompiles()
+			.prepare_test(
+				TestAccount::Alice,
+				PRECOMPILE_ADDRESS,
+				EvmDataWriter::new_with_selector(Action::XvmCall)
+					.write(Bytes(context.encode()))
+					.write(Bytes(b"".to_vec()))
+					.write(Bytes(b"".to_vec()))
+					.write(Bytes(b"".to_vec()))
+					.build(),
+			)
+			.expect_no_logs()
+			.execute_returns(EvmDataWriter::new().write(true).build());
+	})
 }

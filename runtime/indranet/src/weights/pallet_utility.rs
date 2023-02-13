@@ -37,7 +37,7 @@
 #![allow(unused_parens)]
 #![allow(unused_imports)]
 
-use frame_support::{traits::Get, weights::Weight};
+use frame_support::{traits::Get, weights::{Weight}};
 use sp_std::marker::PhantomData;
 
 /// Weight functions for `pallet_utility`.
@@ -45,31 +45,26 @@ pub struct WeightInfo<T>(PhantomData<T>);
 impl<T: frame_system::Config> pallet_utility::WeightInfo for WeightInfo<T> {
 	/// The range of component `c` is `[0, 1000]`.
 	fn batch(c: u32, ) -> Weight {
-		// Minimum execution time: 13_061 nanoseconds.
-		Weight::from_ref_time(22_002_014)
-			// Standard Error: 1_631
-			.saturating_add(Weight::from_ref_time(4_500_655).saturating_mul(c.into()))
+		Weight::from_ref_time(21_360_000 as u64)
+			// Standard Error: 1_000
+			.saturating_add(Weight::from_ref_time(3_860_000 as u64).saturating_mul(c as u64))
 	}
 	fn as_derivative() -> Weight {
-		// Minimum execution time: 6_100 nanoseconds.
-		Weight::from_ref_time(6_357_000)
+		Weight::from_ref_time(6_860_000 as u64)
 	}
 	/// The range of component `c` is `[0, 1000]`.
 	fn batch_all(c: u32, ) -> Weight {
-		// Minimum execution time: 12_931 nanoseconds.
-		Weight::from_ref_time(24_716_946)
-			// Standard Error: 2_425
-			.saturating_add(Weight::from_ref_time(4_716_164).saturating_mul(c.into()))
+		Weight::from_ref_time(14_622_000 as u64)
+			// Standard Error: 3_000
+			.saturating_add(Weight::from_ref_time(4_028_000 as u64).saturating_mul(c as u64))
 	}
 	fn dispatch_as() -> Weight {
-		// Minimum execution time: 14_958 nanoseconds.
-		Weight::from_ref_time(15_447_000)
+		Weight::from_ref_time(15_303_000 as u64)
 	}
 	/// The range of component `c` is `[0, 1000]`.
 	fn force_batch(c: u32, ) -> Weight {
-		// Minimum execution time: 13_003 nanoseconds.
-		Weight::from_ref_time(21_374_296)
-			// Standard Error: 2_304
-			.saturating_add(Weight::from_ref_time(4_527_355).saturating_mul(c.into()))
+		Weight::from_ref_time(19_985_000 as u64)
+			// Standard Error: 2_000
+			.saturating_add(Weight::from_ref_time(3_859_000 as u64).saturating_mul(c as u64))
 	}
 }
