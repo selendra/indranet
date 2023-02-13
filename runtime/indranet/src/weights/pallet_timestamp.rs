@@ -44,12 +44,15 @@ use sp_std::marker::PhantomData;
 pub struct WeightInfo<T>(PhantomData<T>);
 impl<T: frame_system::Config> pallet_timestamp::WeightInfo for WeightInfo<T> {
 	// Storage: Timestamp Now (r:1 w:1)
+	// Storage: Aura CurrentSlot (r:1 w:0)
 	fn set() -> Weight {
-		(3_852_000 as Weight)
-			.saturating_add(T::DbWeight::get().reads(1 as Weight))
-			.saturating_add(T::DbWeight::get().writes(1 as Weight))
+		// Minimum execution time: 9_524 nanoseconds.
+		Weight::from_ref_time(9_910_000)
+			.saturating_add(T::DbWeight::get().reads(2))
+			.saturating_add(T::DbWeight::get().writes(1))
 	}
 	fn on_finalize() -> Weight {
-		(2_335_000 as Weight)
+		// Minimum execution time: 3_867 nanoseconds.
+		Weight::from_ref_time(4_044_000)
 	}
 }

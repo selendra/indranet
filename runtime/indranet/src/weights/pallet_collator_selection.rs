@@ -45,22 +45,26 @@ pub struct WeightInfo<T>(PhantomData<T>);
 impl<T: frame_system::Config> pallet_collator_selection::WeightInfo for WeightInfo<T> {
 	// Storage: Session NextKeys (r:1 w:0)
 	// Storage: CollatorSelection Invulnerables (r:0 w:1)
+	/// The range of component `b` is `[1, 100]`.
 	fn set_invulnerables(b: u32, ) -> Weight {
-		(7_537_000 as Weight)
-			// Standard Error: 2_000
-			.saturating_add((3_134_000 as Weight).saturating_mul(b as Weight))
-			.saturating_add(T::DbWeight::get().reads((1 as Weight).saturating_mul(b as Weight)))
-			.saturating_add(T::DbWeight::get().writes(1 as Weight))
+		// Minimum execution time: 20_391 nanoseconds.
+		Weight::from_ref_time(19_508_680)
+			// Standard Error: 4_352
+			.saturating_add(Weight::from_ref_time(2_861_485).saturating_mul(b.into()))
+			.saturating_add(T::DbWeight::get().reads((1_u64).saturating_mul(b.into())))
+			.saturating_add(T::DbWeight::get().writes(1))
 	}
 	// Storage: CollatorSelection DesiredCandidates (r:0 w:1)
 	fn set_desired_candidates() -> Weight {
-		(8_482_000 as Weight)
-			.saturating_add(T::DbWeight::get().writes(1 as Weight))
+		// Minimum execution time: 13_328 nanoseconds.
+		Weight::from_ref_time(14_062_000)
+			.saturating_add(T::DbWeight::get().writes(1))
 	}
 	// Storage: CollatorSelection CandidacyBond (r:0 w:1)
 	fn set_candidacy_bond() -> Weight {
-		(8_830_000 as Weight)
-			.saturating_add(T::DbWeight::get().writes(1 as Weight))
+		// Minimum execution time: 13_766 nanoseconds.
+		Weight::from_ref_time(14_153_000)
+			.saturating_add(T::DbWeight::get().writes(1))
 	}
 	// Storage: CollatorSelection Candidates (r:1 w:1)
 	// Storage: CollatorSelection DesiredCandidates (r:1 w:0)
@@ -68,43 +72,50 @@ impl<T: frame_system::Config> pallet_collator_selection::WeightInfo for WeightIn
 	// Storage: Session NextKeys (r:1 w:0)
 	// Storage: CollatorSelection CandidacyBond (r:1 w:0)
 	// Storage: CollatorSelection LastAuthoredBlock (r:0 w:1)
+	/// The range of component `c` is `[1, 999]`.
 	fn register_as_candidate(c: u32, ) -> Weight {
-		(49_340_000 as Weight)
-			// Standard Error: 1_000
-			.saturating_add((73_000 as Weight).saturating_mul(c as Weight))
-			.saturating_add(T::DbWeight::get().reads(5 as Weight))
-			.saturating_add(T::DbWeight::get().writes(2 as Weight))
+		// Minimum execution time: 45_632 nanoseconds.
+		Weight::from_ref_time(49_581_769)
+			// Standard Error: 1_510
+			.saturating_add(Weight::from_ref_time(190_677).saturating_mul(c.into()))
+			.saturating_add(T::DbWeight::get().reads(5))
+			.saturating_add(T::DbWeight::get().writes(2))
 	}
 	// Storage: CollatorSelection Candidates (r:1 w:1)
 	// Storage: CollatorSelection LastAuthoredBlock (r:0 w:1)
+	/// The range of component `c` is `[6, 1000]`.
 	fn leave_intent(c: u32, ) -> Weight {
-		(47_670_000 as Weight)
-			// Standard Error: 1_000
-			.saturating_add((84_000 as Weight).saturating_mul(c as Weight))
-			.saturating_add(T::DbWeight::get().reads(1 as Weight))
-			.saturating_add(T::DbWeight::get().writes(2 as Weight))
+		// Minimum execution time: 34_865 nanoseconds.
+		Weight::from_ref_time(34_357_063)
+			// Standard Error: 1_387
+			.saturating_add(Weight::from_ref_time(179_876).saturating_mul(c.into()))
+			.saturating_add(T::DbWeight::get().reads(1))
+			.saturating_add(T::DbWeight::get().writes(2))
 	}
 	// Storage: System Account (r:2 w:2)
 	// Storage: System BlockWeight (r:1 w:1)
 	// Storage: CollatorSelection LastAuthoredBlock (r:0 w:1)
 	fn note_author() -> Weight {
-		(31_969_000 as Weight)
-			.saturating_add(T::DbWeight::get().reads(3 as Weight))
-			.saturating_add(T::DbWeight::get().writes(4 as Weight))
+		// Minimum execution time: 33_244 nanoseconds.
+		Weight::from_ref_time(34_259_000)
+			.saturating_add(T::DbWeight::get().reads(3))
+			.saturating_add(T::DbWeight::get().writes(4))
 	}
 	// Storage: CollatorSelection Candidates (r:1 w:1)
 	// Storage: CollatorSelection LastAuthoredBlock (r:1000 w:1)
 	// Storage: System Account (r:1 w:1)
 	// Storage: CollatorSelection Invulnerables (r:1 w:0)
 	// Storage: System BlockWeight (r:1 w:1)
-	fn new_session(r: u32, c: u32, ) -> Weight {
-		(0 as Weight)
-			// Standard Error: 1_622_000
-			.saturating_add((9_012_000 as Weight).saturating_mul(r as Weight))
-			// Standard Error: 1_622_000
-			.saturating_add((43_791_000 as Weight).saturating_mul(c as Weight))
-			.saturating_add(T::DbWeight::get().reads((2 as Weight).saturating_mul(c as Weight)))
-			.saturating_add(T::DbWeight::get().writes((1 as Weight).saturating_mul(r as Weight)))
-			.saturating_add(T::DbWeight::get().writes((1 as Weight).saturating_mul(c as Weight)))
+	/// The range of component `r` is `[1, 1000]`.
+	/// The range of component `c` is `[1, 1000]`.
+	fn new_session(_r: u32, c: u32, ) -> Weight {
+		// Minimum execution time: 19_650 nanoseconds.
+		Weight::from_ref_time(19_968_000)
+			// Standard Error: 786_328
+			.saturating_add(Weight::from_ref_time(29_072_359).saturating_mul(c.into()))
+			.saturating_add(T::DbWeight::get().reads(4))
+			.saturating_add(T::DbWeight::get().reads((1_u64).saturating_mul(c.into())))
+			.saturating_add(T::DbWeight::get().writes(1))
+			.saturating_add(T::DbWeight::get().writes((1_u64).saturating_mul(c.into())))
 	}
 }

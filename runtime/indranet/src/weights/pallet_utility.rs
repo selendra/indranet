@@ -43,25 +43,33 @@ use sp_std::marker::PhantomData;
 /// Weight functions for `pallet_utility`.
 pub struct WeightInfo<T>(PhantomData<T>);
 impl<T: frame_system::Config> pallet_utility::WeightInfo for WeightInfo<T> {
+	/// The range of component `c` is `[0, 1000]`.
 	fn batch(c: u32, ) -> Weight {
-		(13_031_000 as Weight)
-			// Standard Error: 1_000
-			.saturating_add((2_829_000 as Weight).saturating_mul(c as Weight))
+		// Minimum execution time: 13_061 nanoseconds.
+		Weight::from_ref_time(22_002_014)
+			// Standard Error: 1_631
+			.saturating_add(Weight::from_ref_time(4_500_655).saturating_mul(c.into()))
 	}
 	fn as_derivative() -> Weight {
-		(1_740_000 as Weight)
+		// Minimum execution time: 6_100 nanoseconds.
+		Weight::from_ref_time(6_357_000)
 	}
+	/// The range of component `c` is `[0, 1000]`.
 	fn batch_all(c: u32, ) -> Weight {
-		(17_846_000 as Weight)
-			// Standard Error: 2_000
-			.saturating_add((3_074_000 as Weight).saturating_mul(c as Weight))
+		// Minimum execution time: 12_931 nanoseconds.
+		Weight::from_ref_time(24_716_946)
+			// Standard Error: 2_425
+			.saturating_add(Weight::from_ref_time(4_716_164).saturating_mul(c.into()))
 	}
 	fn dispatch_as() -> Weight {
-		(8_741_000 as Weight)
+		// Minimum execution time: 14_958 nanoseconds.
+		Weight::from_ref_time(15_447_000)
 	}
+	/// The range of component `c` is `[0, 1000]`.
 	fn force_batch(c: u32, ) -> Weight {
-		(11_543_000 as Weight)
-			// Standard Error: 1_000
-			.saturating_add((2_832_000 as Weight).saturating_mul(c as Weight))
+		// Minimum execution time: 13_003 nanoseconds.
+		Weight::from_ref_time(21_374_296)
+			// Standard Error: 2_304
+			.saturating_add(Weight::from_ref_time(4_527_355).saturating_mul(c.into()))
 	}
 }
