@@ -1,6 +1,6 @@
 [package]
 name = "pallet-evm-precompile-assets-erc20"
-version = "1.0.0"
+version = "0.2.0"
 authors = ["Selendra <info@selendra>"]
 edition = "2021"
 description = "A Precompile to expose a Assets pallet through an ERC20-compliant interface."
