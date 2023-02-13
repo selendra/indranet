@@ -18,7 +18,7 @@
 use crate::{
 	chain_spec,
 	cli::{Cli, RelayChainCli, Subcommand},
-	service,
+	service, service::start_indranet_node
 };
 use codec::Encode;
 use forests_client_cli::generate_genesis_block;
@@ -41,12 +41,9 @@ use indranet_primitive::Block;
 #[cfg(feature = "frame-benchmarking")]
 use frame_benchmarking_cli::{BenchmarkCmd, SUBSTRATE_REFERENCE_HARDWARE};
 
-fn load_spec(
-	id: &str,
-	para_id: u32,
-) -> std::result::Result<Box<dyn sc_service::ChainSpec>, String> {
+fn load_spec(id: &str) -> std::result::Result<Box<dyn sc_service::ChainSpec>, String> {
 	Ok(match id {
-		"" | "indranet-dev" => Box::new(chain_spec::indranet::get_chain_spec(para_id)),
+		"" | "indranet-dev" => Box::new(chain_spec::indranet::get_chain_spec()),
 		"indranet" => Box::new(chain_spec::IndranetChainSpec::from_json_bytes(
 			&include_bytes!("../chain_spec/indranet.json")[..],
 		)?),
@@ -97,7 +94,7 @@ impl SubstrateCli for Cli {
 	}
 
 	fn load_spec(&self, id: &str) -> std::result::Result<Box<dyn sc_service::ChainSpec>, String> {
-		load_spec(id, self.run.parachain_id)
+		load_spec(id)
 	}
 
 	fn native_runtime_version(_chain_spec: &Box<dyn ChainSpec>) -> &'static RuntimeVersion {
@@ -287,6 +284,15 @@ pub fn run() -> Result<()> {
 					>(&config, service::build_import_queue)?;
 					cmd.run(params.client)
 				}),
+				#[cfg(not(feature = "runtime-benchmarks"))]
+				BenchmarkCmd::Storage(_) =>
+					return Err(sc_cli::Error::Input(
+						"Compile with --features=runtime-benchmarks \
+						to enable storage benchmarks."
+							.into(),
+					)
+					.into()),
+				#[cfg(feature = "runtime-benchmarks")]
 				BenchmarkCmd::Storage(cmd) => runner.sync_run(|config| {
 					let params = service::new_partial::<
 						service::indranet::RuntimeApi,
@@ -332,10 +338,14 @@ pub fn run() -> Result<()> {
                         .chain(cli.relaychain_args.iter()),
                 );
 
-                let id = ParaId::from(cli.run.parachain_id);
+                let para_id = ParaId::from(
+                    chain_spec::Extensions::try_get(&*config.chain_spec)
+                        .map(|e| e.para_id)
+                        .ok_or("ParaId not found in chain spec extension")?
+                );
 
                 let parachain_account =
-                    AccountIdConversion::<selendra_primitives::v2::AccountId>::into_account_truncating(&id);
+                    AccountIdConversion::<selendra_primitives::v2::AccountId>::into_account_truncating(&para_id);
 
                 let state_version = Cli::native_runtime_version(&config.chain_spec).state_version();
                 let block: Block = generate_genesis_block(&*config.chain_spec, state_version)
@@ -349,7 +359,7 @@ pub fn run() -> Result<()> {
                 )
                 .map_err(|err| format!("Relay chain argument error: {}", err))?;
 
-                info!("Parachain id: {:?}", id);
+                info!("Parachain id: {:?}", para_id);
                 info!("Parachain Account: {}", parachain_account);
                 info!("Parachain genesis state: {}", genesis_state);
                 info!(
@@ -361,7 +371,7 @@ pub fn run() -> Result<()> {
                     }
                 );
 
-                    service::start_indranet_node(config, selendra_config, collator_options, id)
+                    start_indranet_node(config, selendra_config, collator_options, para_id)
                         .await
                         .map(|r| r.0)
                         .map_err(Into::into)
@@ -408,7 +418,7 @@ impl CliConfiguration<Self> for RelayChainCli {
 	fn base_path(&self) -> Result<Option<BasePath>> {
 		Ok(self
 			.shared_params()
-			.base_path()
+			.base_path()?
 			.or_else(|| self.base_path.clone().map(Into::into)))
 	}
 
@@ -459,8 +469,8 @@ impl CliConfiguration<Self> for RelayChainCli {
 		self.base.base.transaction_pool(is_dev)
 	}
 
-	fn state_cache_child_ratio(&self) -> Result<Option<usize>> {
-		self.base.base.state_cache_child_ratio()
+	fn trie_cache_maximum_size(&self) -> Result<Option<usize>> {
+		self.base.base.trie_cache_maximum_size()
 	}
 
 	fn rpc_methods(&self) -> Result<sc_service::config::RpcMethods> {
@@ -500,5 +510,9 @@ impl CliConfiguration<Self> for RelayChainCli {
 		chain_spec: &Box<dyn ChainSpec>,
 	) -> Result<Option<sc_telemetry::TelemetryEndpoints>> {
 		self.base.base.telemetry_endpoints(chain_spec)
+	}
+
+	fn node_name(&self) -> Result<String> {
+		self.base.base.node_name()
 	}
 }

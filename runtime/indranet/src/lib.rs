@@ -52,8 +52,9 @@ use sp_version::RuntimeVersion;
 
 use codec::{Decode, Encode, MaxEncodedLen};
 use frame_support::{
-	construct_runtime, parameter_types,
+	construct_runtime,
 	dispatch::DispatchClass,
+	parameter_types,
 	traits::{
 		AsEnsureOriginWithArg, ConstU32, EitherOfDiverse, FindAuthor, InstanceFilter, Nothing,
 	},

@@ -40,9 +40,13 @@ use substrate_frame_rpc_system::{System, SystemApiServer};
 
 use indranet_primitive::{AccountId, Balance, Block, Hash, Index};
 
-pub fn open_frontier_backend(
+pub fn open_frontier_backend<C>(
+	client: Arc<C>,
 	config: &sc_service::Configuration,
-) -> Result<Arc<fc_db::Backend<Block>>, String> {
+) -> Result<Arc<fc_db::Backend<Block>>, String>
+where
+	C: sp_blockchain::HeaderBackend<Block>,
+{
 	let config_dir = config
 		.base_path
 		.as_ref()
@@ -53,9 +57,10 @@ pub fn open_frontier_backend(
 		});
 	let path = config_dir.join("frontier").join("db");
 
-	Ok(Arc::new(fc_db::Backend::<Block>::new(&fc_db::DatabaseSettings {
-		source: fc_db::DatabaseSource::RocksDb { path, cache_size: 0 },
-	})?))
+	Ok(Arc::new(fc_db::Backend::<Block>::new(
+		client,
+		&fc_db::DatabaseSettings { source: fc_db::DatabaseSource::RocksDb { path, cache_size: 0 } },
+	)?))
 }
 
 pub fn overrides_handle<C, BE>(client: Arc<C>) -> Arc<OverrideHandle<Block>>
@@ -180,8 +185,8 @@ where
 			block_data_cache.clone(),
 			fee_history_cache,
 			fee_history_limit,
-			// Unit multiplier for non-transactional - can be changed in the future
-			1,
+			// Allow 10x max allowed weight for non-transactional calls
+			10,
 		)
 		.into_rpc(),
 	)?;

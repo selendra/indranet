@@ -20,7 +20,7 @@ use super::{get_account_id_from_seed, get_from_seed, Extensions};
 
 use forests_primitives_core::ParaId;
 use indranet_primitive::{AccountId, AuraId, Balance};
-use indranet_runtime::{evm_config::Precompiles, UNITS};
+use indranet_runtime::{Precompiles, UNITS};
 use sc_service::ChainType;
 use sc_telemetry::TelemetryEndpoints;
 use sp_core::sr25519;
@@ -44,7 +44,7 @@ pub type IndranetChainSpec =
 	sc_service::GenericChainSpec<indranet_runtime::GenesisConfig, Extensions>;
 
 /// Gen Indranet chain specification for given parachain id.
-pub fn get_chain_spec(para_id: u32) -> IndranetChainSpec {
+pub fn get_chain_spec() -> IndranetChainSpec {
 	// Alice as default
 	let sudo_key = get_account_id_from_seed::<sr25519::Public>("Alice");
 	let endowned = vec![
@@ -56,7 +56,7 @@ pub fn get_chain_spec(para_id: u32) -> IndranetChainSpec {
 		"Indranet Testnet",
 		"indranet",
 		ChainType::Development,
-		move || make_genesis(endowned.clone(), sudo_key.clone(), para_id.into()),
+		move || make_genesis(endowned.clone(), sudo_key.clone(), 1000.into() ),
 		vec![],
 		Some(
 			TelemetryEndpoints::new(vec![(INDRANET_STAGING_TELEMETRY_URL.to_string(), 0)])
@@ -65,7 +65,11 @@ pub fn get_chain_spec(para_id: u32) -> IndranetChainSpec {
 		Some(DEFAULT_PROTOCOL_ID),
 		None,
 		Some(indranet_chain_spec_properties()),
-		Extensions { bad_blocks: Default::default(), relay_chain: "selendra".into(), para_id },
+		Extensions {
+			bad_blocks: Default::default(),
+			relay_chain: "selendra".into(),
+			para_id: 1000
+		},
 	)
 }
 
@@ -108,9 +112,9 @@ fn make_genesis(
 		aura: indranet_runtime::AuraConfig { authorities: vec![] },
 		aura_ext: Default::default(),
 		collator_selection: indranet_runtime::CollatorSelectionConfig {
-			desired_candidates: 200,
 			candidacy_bond: 3_200_000 * UNITS,
 			invulnerables: authorities.iter().map(|x| x.0.clone()).collect::<Vec<_>>(),
+			..Default::default()
 		},
 		evm: indranet_runtime::EVMConfig {
 			// We need _some_ code inserted at the precompile address so that
@@ -137,5 +141,7 @@ fn make_genesis(
 		ethereum: Default::default(),
 		selendra_xcm: Default::default(),
 		parachain_system: Default::default(),
+		assets: Default::default(),
+		transaction_payment: Default::default(),
 	}
 }
