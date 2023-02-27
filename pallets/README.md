@@ -1,0 +1,1 @@
+* This dependencies are implement from [ AstarNetwork ](https://github.com/AstarNetwork/astar-frame) Under [GNU General Public License](http://www.gnu.org/licenses)

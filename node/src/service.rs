@@ -33,7 +33,8 @@ use forests_relay_chain_inprocess_interface::build_inprocess_relay_chain;
 use forests_relay_chain_interface::{RelayChainError, RelayChainInterface, RelayChainResult};
 use forests_relay_chain_rpc_interface::{create_client_and_start_worker, RelayChainRpcInterface};
 use futures::{lock::Mutex, StreamExt};
-use sc_client_api::{BlockchainEvents, ExecutorProvider};
+use pallet_contracts_rpc::ContractsApiServer;
+use sc_client_api::BlockchainEvents;
 use sc_consensus::import_queue::BasicQueue;
 use sc_executor::NativeElseWasmExecutor;
 use sc_network::{NetworkBlock, NetworkService};
@@ -47,7 +48,7 @@ use sp_runtime::traits::BlakeTwo256;
 use std::{collections::BTreeMap, sync::Arc, time::Duration};
 use substrate_prometheus_endpoint::Registry;
 
-use indranet_primitive::{AccountId, Balance, Block, Hash, Index};
+use indranet_primitive::{AccountId, Balance, Block, BlockNumber, Hash, Index};
 
 /// Indranet network runtime executor.
 pub mod indranet {
@@ -171,7 +172,7 @@ where
 		client.clone(),
 	);
 
-	let frontier_backend = crate::rpc::open_frontier_backend(config)?;
+	let frontier_backend = crate::rpc::open_frontier_backend(client.clone(), config)?;
 	let frontier_block_import =
 		FrontierBlockImport::new(client.clone(), client.clone(), frontier_backend.clone());
 
@@ -253,6 +254,7 @@ where
 		+ pallet_transaction_payment_rpc::TransactionPaymentRuntimeApi<Block, Balance>
 		+ fp_rpc::EthereumRuntimeRPCApi<Block>
 		+ fp_rpc::ConvertTransactionRuntimeApi<Block>
+		+ pallet_contracts_rpc::ContractsRuntimeApi<Block, AccountId, Balance, BlockNumber, Hash>
 		+ forests_primitives_core::CollectCollationInfo<Block>,
 	sc_client_api::StateBackendFor<TFullBackend<Block>, Block>: sp_api::StateBackend<BlakeTwo256>,
 	Executor: sc_executor::NativeExecutionDispatch + 'static,
@@ -317,7 +319,7 @@ where
 	let prometheus_registry = parachain_config.prometheus_registry().cloned();
 	let transaction_pool = params.transaction_pool.clone();
 	let import_queue = forests_client_service::SharedImportQueue::new(params.import_queue);
-	let (network, system_rpc_tx, start_network) =
+	let (network, system_rpc_tx, tx_handler_controller, start_network) =
 		sc_service::build_network(sc_service::BuildNetworkParams {
 			config: &parachain_config,
 			client: client.clone(),
@@ -406,7 +408,17 @@ where
 				overrides: overrides.clone(),
 			};
 
-			crate::rpc::create_full(deps, subscription).map_err(Into::into)
+			let mut io = crate::rpc::create_full(deps, subscription)?;
+
+			// This node support WASM contracts
+			io.merge(pallet_contracts_rpc::Contracts::new(Arc::clone(&client)).into_rpc())
+				.map_err(|_| {
+					sc_service::Error::Other(
+						"Failed to register pallet-contracts RPC methods.".into(),
+					)
+				})?;
+
+			Ok(io)
 		})
 	};
 
@@ -421,6 +433,7 @@ where
 		backend: backend.clone(),
 		network: network.clone(),
 		system_rpc_tx,
+		tx_handler_controller,
 		telemetry: telemetry.as_mut(),
 	})?;
 
@@ -526,23 +539,19 @@ where
 			sp_consensus_aura::sr25519::AuthorityPair,
 			_,
 			_,
-			_,
 		>(forests_client_consensus_aura::BuildVerifierParams {
 			client: client2.clone(),
 			create_inherent_data_providers: move |_, _| async move {
-				let time = sp_timestamp::InherentDataProvider::from_system_time();
+				let timestamp = sp_timestamp::InherentDataProvider::from_system_time();
 
 				let slot =
                     sp_consensus_aura::inherents::InherentDataProvider::from_timestamp_and_slot_duration(
-                        *time,
+                        *timestamp,
                         slot_duration,
                     );
 
-				Ok((time, slot))
+				Ok((slot, timestamp))
 			},
-			can_author_with: sp_consensus::CanAuthorWithNativeVersion::new(
-				client2.executor().clone(),
-			),
 			telemetry: telemetry_handle,
 		})) as Box<_>
 	};
@@ -635,12 +644,12 @@ pub async fn start_indranet_node(
                                             &validation_data,
                                             id,
                                         ).await;
-                                    let time =
+                                    let timestamp =
                                         sp_timestamp::InherentDataProvider::from_system_time();
 
                                     let slot =
                                     sp_consensus_aura::inherents::InherentDataProvider::from_timestamp_and_slot_duration(
-                                        *time,
+                                        *timestamp,
                                         slot_duration,
                                     );
 
@@ -650,7 +659,7 @@ pub async fn start_indranet_node(
                                                 "Failed to create parachain inherent",
                                             )
                                         })?;
-                                    Ok((time, slot, parachain_inherent))
+                                    Ok((slot, timestamp, parachain_inherent))
                                 }
                             },
                         block_import: client2.clone(),

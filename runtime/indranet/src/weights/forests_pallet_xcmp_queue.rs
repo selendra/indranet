@@ -45,14 +45,14 @@ pub struct WeightInfo<T>(PhantomData<T>);
 impl<T: frame_system::Config> forests_pallet_xcmp_queue::WeightInfo for WeightInfo<T> {
 	// Storage: XcmpQueue QueueConfig (r:1 w:1)
 	fn set_config_with_u32() -> Weight {
-		(2_742_000 as Weight)
-			.saturating_add(T::DbWeight::get().reads(1 as Weight))
-			.saturating_add(T::DbWeight::get().writes(1 as Weight))
+		Weight::from_ref_time(5_192_000 as u64)
+			.saturating_add(T::DbWeight::get().reads(1 as u64))
+			.saturating_add(T::DbWeight::get().writes(1 as u64))
 	}
 	// Storage: XcmpQueue QueueConfig (r:1 w:1)
 	fn set_config_with_weight() -> Weight {
-		(2_723_000 as Weight)
-			.saturating_add(T::DbWeight::get().reads(1 as Weight))
-			.saturating_add(T::DbWeight::get().writes(1 as Weight))
+		Weight::from_ref_time(5_363_000 as u64)
+			.saturating_add(T::DbWeight::get().reads(1 as u64))
+			.saturating_add(T::DbWeight::get().writes(1 as u64))
 	}
 }
