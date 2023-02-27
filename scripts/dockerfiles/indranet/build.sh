@@ -14,7 +14,7 @@ GITREPO=indranet
 
 # Build the image
 echo "Building ${GITUSER}/${GITREPO}:latest docker image, hang on!"
-time docker build -f ./scripts/dockerfiles/selendra/selendra_builder.Dockerfile -t ${GITUSER}/${GITREPO}:latest .
+time docker build -f ./scripts/dockerfiles/indranet/indranet_builder.Dockerfile -t ${GITUSER}/${GITREPO}:latest .
 docker tag ${GITUSER}/${GITREPO}:latest ${GITUSER}/${GITREPO}:v${VERSION}
 
 # Show the list of available images for this repo
