@@ -1,7 +1,8 @@
 [workspace]
 members = [
 	"primitives",
-	"runtime/common"
+	"runtime/common",
+	"runtime/indranet"
 ]
 
 [profile.release]
