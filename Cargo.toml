@@ -1,9 +1,6 @@
 [workspace]
 members = [
-	"node",
 	"primitives",
-	"runtime/common",
-	"runtime/indranet",
 ]
 
 [profile.release]
