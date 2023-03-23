@@ -80,7 +80,7 @@ impl ShouldExecute for DenyReserveTransferToRelayChain {
 			message.0.iter().any(|inst| matches!(inst, ReserveAssetDeposited { .. }))
 		{
 			log::warn!(
-				target: "xcm::barrier",
+				target: "xcm::barriers",
 				"Unexpected ReserveAssetDeposited from the Relay Chain",
 			);
 		}
@@ -96,7 +96,7 @@ pub struct AssetFeeAsExistentialDepositMultiplier<Runtime, WeightToFee, BalanceC
 	PhantomData<(Runtime, WeightToFee, BalanceConverter)>,
 );
 impl<CurrencyBalance, Runtime, WeightToFee, BalanceConverter>
-	forests_primitives_utility::ChargeWeightInFungibles<
+	forest_primitives_utility::ChargeWeightInFungibles<
 		AccountIdOf<Runtime>,
 		pallet_assets::Pallet<Runtime>,
 	> for AssetFeeAsExistentialDepositMultiplier<Runtime, WeightToFee, BalanceConverter>
