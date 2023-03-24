@@ -1,5 +1,6 @@
 [workspace]
 members = [
+	"node",
 	"runtime/indranet",
 	"pallets/custom-signatures",
 	"pallets/precompiles/sr25519",

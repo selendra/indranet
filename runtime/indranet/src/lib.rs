@@ -47,7 +47,7 @@ use sp_version::NativeVersion;
 use sp_version::RuntimeVersion;
 
 use codec::{Decode, Encode, MaxEncodedLen};
-use constants::{currency::*, fee::WeightToFee};
+pub use constants::{currency::*, fee::WeightToFee};
 use frame_support::{
 	construct_runtime,
 	dispatch::DispatchClass,
@@ -68,7 +68,7 @@ pub use parachains_common as common;
 use parachains_common::{
 	impls::{AssetsToBlockAuthor, DealWithFees},
 	opaque, AccountId, AssetId, Balance, BlockNumber, Hash, Header, Index,
-	IndranetAuraId as AuraId, Signature, AVERAGE_ON_INITIALIZE_RATIO, HOURS, MAXIMUM_BLOCK_WEIGHT,
+	AuraId, Signature, AVERAGE_ON_INITIALIZE_RATIO, HOURS, MAXIMUM_BLOCK_WEIGHT,
 	NORMAL_DISPATCH_RATIO, SLOT_DURATION,
 };
 use xcm_config::{SelLocation, XcmConfig, XcmOriginToTransactDispatchOrigin};
@@ -128,7 +128,7 @@ parameter_types! {
 		})
 		.avg_block_initialization(AVERAGE_ON_INITIALIZE_RATIO)
 		.build_or_panic();
-	pub const SS58Prefix: u8 = 0;
+	pub const SS58Prefix: u8 = 204;
 }
 
 // Configure FRAME pallets to include in runtime.
@@ -560,6 +560,11 @@ impl pallet_uniques::Config for Runtime {
 	type Locker = ();
 }
 
+impl pallet_sudo::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	type RuntimeCall = RuntimeCall;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -608,6 +613,8 @@ construct_runtime!(
 		Ethereum: pallet_ethereum = 61,
 		EthCall: pallet_custom_signatures = 62,
 		BaseFee: pallet_base_fee = 63,
+
+		Sudo: pallet_sudo = 99,
 
 	}
 );
