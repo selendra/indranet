@@ -1,8 +1,9 @@
 [workspace]
 members = [
-	"primitives",
-	"runtime/common",
-	"runtime/indranet"
+	"runtime/indranet",
+	"pallets/custom-signatures",
+	"pallets/precompiles/sr25519",
+	"pallets/precompiles/substrate-ecdsa",
 ]
 
 [profile.release]

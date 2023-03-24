@@ -15,8 +15,8 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 pub mod currency {
-	use selendra_runtime_constants as constants;
 	use selendra_core_primitives::Balance;
+	use selendra_runtime_constants as constants;
 
 	/// The existential deposit. Set to 1/10 of its parent Relay Chain.
 	pub const EXISTENTIAL_DEPOSIT: Balance = constants::currency::EXISTENTIAL_DEPOSIT / 10;

@@ -354,6 +354,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "auto_impl"
+version = "1.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8a8c1df849285fbacd587de7818cc7d13be6cd2cbcd47a04fb1801b0e2706e33"
+dependencies = [
+ "proc-macro-error",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.107",
+]
+
+[[package]]
 name = "autocfg"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -671,6 +683,17 @@ checksum = "771fe0050b883fcc3ea2359b1a96bcfbc090b7116eae7c3c512c7a083fdf23d3"
 
 [[package]]
 name = "bstr"
+version = "0.2.17"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ba3569f383e8f1598449f1a423e72e99569137b47740b1da11ef19af3d5c3223"
+dependencies = [
+ "lazy_static",
+ "memchr",
+ "regex-automata",
+]
+
+[[package]]
+name = "bstr"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c3d4260bcc2e8fc9df1eac4919a720effeb63a3f0952f5bf4944adfa18897f09"
@@ -958,6 +981,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c278839b831783b70278b14df4d45e1beb1aad306c07bb796637de9a0e323e8e"
 dependencies = [
  "crossbeam-utils",
+]
+
+[[package]]
+name = "console"
+version = "0.15.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c3d79fbe8970a77e3e34151cc13d3b3e248aa0faaecb9f6091fa07ebefe5ad60"
+dependencies = [
+ "encode_unicode",
+ "lazy_static",
+ "libc",
+ "windows-sys 0.42.0",
 ]
 
 [[package]]
@@ -1598,6 +1633,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "encode_unicode"
+version = "0.3.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a357d28ed41a50f9c765dbfe56cbc04a64e53e5fc58ba79fbc34c10ef3df831f"
+
+[[package]]
 name = "enum-as-inner"
 version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1692,10 +1733,117 @@ dependencies = [
 ]
 
 [[package]]
+name = "ethbloom"
+version = "0.13.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c22d4b5885b6aa2fe5e8b9329fb8d232bf739e434e6b87347c63bdd00c120f60"
+dependencies = [
+ "crunchy",
+ "fixed-hash",
+ "impl-codec",
+ "impl-rlp",
+ "impl-serde",
+ "scale-info",
+ "tiny-keccak",
+]
+
+[[package]]
+name = "ethereum"
+version = "0.14.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6a89fb87a9e103f71b903b80b670200b54cc67a07578f070681f1fffb7396fb7"
+dependencies = [
+ "bytes",
+ "ethereum-types",
+ "hash-db",
+ "hash256-std-hasher",
+ "parity-scale-codec",
+ "rlp",
+ "scale-info",
+ "serde",
+ "sha3 0.10.6",
+ "triehash",
+]
+
+[[package]]
+name = "ethereum-types"
+version = "0.14.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "02d215cbf040552efcbe99a38372fe80ab9d00268e20012b79fcd0f073edd8ee"
+dependencies = [
+ "ethbloom",
+ "fixed-hash",
+ "impl-codec",
+ "impl-rlp",
+ "impl-serde",
+ "primitive-types",
+ "scale-info",
+ "uint",
+]
+
+[[package]]
 name = "event-listener"
 version = "2.5.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0206175f82b8d6bf6652ff7d71a1e27fd2e4efde587fd368662814d6ec1d9ce0"
+
+[[package]]
+name = "evm"
+version = "0.37.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f4448c65b71e8e2b9718232d84d09045eeaaccb2320494e6bd6dbf7e58fec8ff"
+dependencies = [
+ "auto_impl",
+ "environmental",
+ "ethereum",
+ "evm-core",
+ "evm-gasometer",
+ "evm-runtime",
+ "log",
+ "parity-scale-codec",
+ "primitive-types",
+ "rlp",
+ "scale-info",
+ "serde",
+ "sha3 0.10.6",
+]
+
+[[package]]
+name = "evm-core"
+version = "0.37.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "64c51bec0eb68a891c2575c758eaaa1d61373fc51f7caaf216b1fb5c3fea3b5d"
+dependencies = [
+ "parity-scale-codec",
+ "primitive-types",
+ "scale-info",
+ "serde",
+]
+
+[[package]]
+name = "evm-gasometer"
+version = "0.37.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a8b93c59c54fc26522d842f0e0d3f8e8be331c776df18ff3e540b53c2f64d509"
+dependencies = [
+ "environmental",
+ "evm-core",
+ "evm-runtime",
+ "primitive-types",
+]
+
+[[package]]
+name = "evm-runtime"
+version = "0.37.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c79b9459ce64f1a28688397c4013764ce53cd57bb84efc16b5187fa9b05b13ad"
+dependencies = [
+ "auto_impl",
+ "environmental",
+ "evm-core",
+ "primitive-types",
+ "sha3 0.10.6",
+]
 
 [[package]]
 name = "exit-future"
@@ -1887,7 +2035,7 @@ checksum = "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
 [[package]]
 name = "forest-pallet-aura-ext"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -1903,7 +2051,7 @@ dependencies = [
 [[package]]
 name = "forest-pallet-dmp-queue"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
 dependencies = [
  "forest-primitives-core",
  "frame-support",
@@ -1920,7 +2068,7 @@ dependencies = [
 [[package]]
 name = "forest-pallet-parachain-system"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
 dependencies = [
  "bytes",
  "environmental",
@@ -1948,7 +2096,7 @@ dependencies = [
 [[package]]
 name = "forest-pallet-parachain-system-proc-macro"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
 dependencies = [
  "proc-macro-crate",
  "proc-macro2",
@@ -1959,7 +2107,7 @@ dependencies = [
 [[package]]
 name = "forest-pallet-session-benchmarking"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -1973,7 +2121,7 @@ dependencies = [
 [[package]]
 name = "forest-pallet-xcm"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
 dependencies = [
  "forest-primitives-core",
  "frame-support",
@@ -1989,7 +2137,7 @@ dependencies = [
 [[package]]
 name = "forest-pallet-xcmp-queue"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
 dependencies = [
  "forest-primitives-core",
  "frame-benchmarking",
@@ -2008,7 +2156,7 @@ dependencies = [
 [[package]]
 name = "forest-primitives-core"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
 dependencies = [
  "parity-scale-codec",
  "selendra-core-primitives",
@@ -2023,7 +2171,7 @@ dependencies = [
 [[package]]
 name = "forest-primitives-parachain-inherent"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
 dependencies = [
  "async-trait",
  "forest-primitives-core",
@@ -2046,7 +2194,7 @@ dependencies = [
 [[package]]
 name = "forest-primitives-timestamp"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
 dependencies = [
  "forest-primitives-core",
  "futures",
@@ -2059,7 +2207,7 @@ dependencies = [
 [[package]]
 name = "forest-primitives-utility"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
 dependencies = [
  "forest-primitives-core",
  "frame-support",
@@ -2075,7 +2223,7 @@ dependencies = [
 [[package]]
 name = "forest-relay-chain-interface"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
 dependencies = [
  "async-trait",
  "forest-primitives-core",
@@ -2094,7 +2242,7 @@ dependencies = [
 [[package]]
 name = "forest-test-relay-sproof-builder"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
 dependencies = [
  "forest-primitives-core",
  "parity-scale-codec",
@@ -2119,6 +2267,86 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a9c384f161156f5260c24a097c56119f9be8c798586aecc13afbcbe7b7e26bf8"
 dependencies = [
  "percent-encoding",
+]
+
+[[package]]
+name = "fp-consensus"
+version = "2.0.0-dev"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "ethereum",
+ "parity-scale-codec",
+ "sp-core",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
+name = "fp-ethereum"
+version = "1.0.0-dev"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "ethereum",
+ "ethereum-types",
+ "fp-evm",
+ "frame-support",
+ "num_enum",
+ "parity-scale-codec",
+ "sp-core",
+ "sp-std",
+]
+
+[[package]]
+name = "fp-evm"
+version = "3.0.0-dev"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "evm",
+ "frame-support",
+ "parity-scale-codec",
+ "serde",
+ "sp-core",
+ "sp-std",
+]
+
+[[package]]
+name = "fp-rpc"
+version = "3.0.0-dev"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "ethereum",
+ "ethereum-types",
+ "fp-evm",
+ "parity-scale-codec",
+ "scale-info",
+ "sp-api",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
+name = "fp-self-contained"
+version = "1.0.0-dev"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "ethereum",
+ "frame-support",
+ "parity-scale-codec",
+ "parity-util-mem",
+ "scale-info",
+ "serde",
+ "sp-runtime",
+]
+
+[[package]]
+name = "fp-storage"
+version = "2.0.0"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "parity-scale-codec",
+ "serde",
 ]
 
 [[package]]
@@ -2626,7 +2854,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "029d74589adefde59de1a0c4f4732695c32805624aec7b68d91503d4dba79afc"
 dependencies = [
  "aho-corasick",
- "bstr",
+ "bstr 1.4.0",
  "fnv",
  "log",
  "regex",
@@ -2967,6 +3195,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "impl-rlp"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f28220f89297a075ddc7245cd538076ee98b01f2a9c23a53a4f1105d5a322808"
+dependencies = [
+ "rlp",
+]
+
+[[package]]
 name = "impl-serde"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2998,19 +3235,8 @@ dependencies = [
 ]
 
 [[package]]
-name = "indranet-primitive"
-version = "0.2.0"
-dependencies = [
- "sp-consensus-aura",
- "sp-core",
- "sp-io",
- "sp-runtime",
- "sp-std",
-]
-
-[[package]]
 name = "indranet-runtime"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "forest-pallet-aura-ext",
  "forest-pallet-dmp-queue",
@@ -3021,6 +3247,8 @@ dependencies = [
  "forest-primitives-core",
  "forest-primitives-timestamp",
  "forest-primitives-utility",
+ "fp-rpc",
+ "fp-self-contained",
  "frame-benchmarking",
  "frame-executive",
  "frame-support",
@@ -3035,7 +3263,20 @@ dependencies = [
  "pallet-aura",
  "pallet-authorship",
  "pallet-balances",
+ "pallet-base-fee",
  "pallet-collator-selection",
+ "pallet-custom-signatures",
+ "pallet-ethereum",
+ "pallet-evm",
+ "pallet-evm-precompile-blake2",
+ "pallet-evm-precompile-bn128",
+ "pallet-evm-precompile-dispatch",
+ "pallet-evm-precompile-ed25519",
+ "pallet-evm-precompile-modexp",
+ "pallet-evm-precompile-sha3fips",
+ "pallet-evm-precompile-simple",
+ "pallet-evm-precompile-sr25519",
+ "pallet-evm-precompile-substrate-ecdsa",
  "pallet-multisig",
  "pallet-proxy",
  "pallet-session",
@@ -3069,33 +3310,6 @@ dependencies = [
  "substrate-wasm-builder",
  "xcm",
  "xcm-builder",
- "xcm-executor",
-]
-
-[[package]]
-name = "indranet-runtime-common"
-version = "0.2.0"
-dependencies = [
- "forest-primitives-utility",
- "frame-executive",
- "frame-support",
- "frame-system",
- "pallet-asset-tx-payment",
- "pallet-assets",
- "pallet-authorship",
- "pallet-balances",
- "pallet-collator-selection",
- "parity-scale-codec",
- "scale-info",
- "selendra-primitives",
- "selendra-runtime-common",
- "sp-consensus-aura",
- "sp-core",
- "sp-io",
- "sp-runtime",
- "sp-std",
- "substrate-wasm-builder",
- "xcm",
  "xcm-executor",
 ]
 
@@ -3388,6 +3602,9 @@ name = "lazy_static"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
+dependencies = [
+ "spin",
+]
 
 [[package]]
 name = "lazycell"
@@ -4166,7 +4383,7 @@ dependencies = [
  "digest 0.10.6",
  "multihash-derive",
  "sha2 0.10.6",
- "sha3",
+ "sha3 0.10.6",
  "unsigned-varint",
 ]
 
@@ -4348,6 +4565,20 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "61807f77802ff30975e01f4f071c8ba10c022052f98b3294119f3e615d13e5be"
 
 [[package]]
+name = "num"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "43db66d1170d347f9a065114077f7dccb00c1b9478c89384490a3425279a4606"
+dependencies = [
+ "num-bigint",
+ "num-complex",
+ "num-integer",
+ "num-iter",
+ "num-rational",
+ "num-traits",
+]
+
+[[package]]
 name = "num-bigint"
 version = "0.4.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4388,6 +4619,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "num-iter"
+version = "0.1.43"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7d03e6c028c5dc5cac6e2dec0efda81fc887605bb3d884578bb6d6bf7514e252"
+dependencies = [
+ "autocfg",
+ "num-integer",
+ "num-traits",
+]
+
+[[package]]
 name = "num-rational"
 version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4417,6 +4659,27 @@ checksum = "0fac9e2da13b5eb447a6ce3d392f23a29d8694bff781bf03a16cd9ac8697593b"
 dependencies = [
  "hermit-abi 0.2.6",
  "libc",
+]
+
+[[package]]
+name = "num_enum"
+version = "0.5.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1f646caf906c20226733ed5b1374287eb97e3c2a5c227ce668c1f2ce20ae57c9"
+dependencies = [
+ "num_enum_derive",
+]
+
+[[package]]
+name = "num_enum_derive"
+version = "0.5.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dcbff9bc912032c62bf65ef1d5aea88983b420f4f839db1e9b0c281a25c9c799"
+dependencies = [
+ "proc-macro-crate",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.107",
 ]
 
 [[package]]
@@ -4659,6 +4922,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-base-fee"
+version = "1.0.0"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "fp-evm",
+ "frame-support",
+ "frame-system",
+ "parity-scale-codec",
+ "scale-info",
+ "serde",
+ "sp-core",
+ "sp-runtime",
+]
+
+[[package]]
 name = "pallet-beefy"
 version = "4.0.0-dev"
 source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.9.33#2dff067e9f7f6f3cc4dbfdaaa97753eccc407689"
@@ -4737,7 +5015,7 @@ dependencies = [
 [[package]]
 name = "pallet-collator-selection"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -4766,6 +5044,26 @@ dependencies = [
  "scale-info",
  "sp-core",
  "sp-io",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
+name = "pallet-custom-signatures"
+version = "0.1.0"
+dependencies = [
+ "assert_matches",
+ "frame-support",
+ "frame-system",
+ "hex-literal",
+ "libsecp256k1",
+ "pallet-balances",
+ "parity-scale-codec",
+ "scale-info",
+ "serde",
+ "sp-core",
+ "sp-io",
+ "sp-keyring",
  "sp-runtime",
  "sp-std",
 ]
@@ -4839,6 +5137,171 @@ dependencies = [
  "sp-core",
  "sp-io",
  "sp-npos-elections",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
+name = "pallet-ethereum"
+version = "4.0.0-dev"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "ethereum",
+ "ethereum-types",
+ "evm",
+ "fp-consensus",
+ "fp-ethereum",
+ "fp-evm",
+ "fp-rpc",
+ "fp-self-contained",
+ "fp-storage",
+ "frame-support",
+ "frame-system",
+ "pallet-evm",
+ "pallet-timestamp",
+ "parity-scale-codec",
+ "rlp",
+ "scale-info",
+ "serde",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
+name = "pallet-evm"
+version = "6.0.0-dev"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "environmental",
+ "evm",
+ "fp-evm",
+ "frame-benchmarking",
+ "frame-support",
+ "frame-system",
+ "hex",
+ "log",
+ "pallet-timestamp",
+ "parity-scale-codec",
+ "primitive-types",
+ "rlp",
+ "scale-info",
+ "serde",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
+name = "pallet-evm-precompile-blake2"
+version = "2.0.0-dev"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "fp-evm",
+]
+
+[[package]]
+name = "pallet-evm-precompile-bn128"
+version = "2.0.0-dev"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "fp-evm",
+ "sp-core",
+ "substrate-bn",
+]
+
+[[package]]
+name = "pallet-evm-precompile-dispatch"
+version = "2.0.0-dev"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "fp-evm",
+ "frame-support",
+ "pallet-evm",
+]
+
+[[package]]
+name = "pallet-evm-precompile-ed25519"
+version = "2.0.0-dev"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "ed25519-dalek",
+ "fp-evm",
+]
+
+[[package]]
+name = "pallet-evm-precompile-modexp"
+version = "2.0.0-dev"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "fp-evm",
+ "num",
+]
+
+[[package]]
+name = "pallet-evm-precompile-sha3fips"
+version = "2.0.0-dev"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "fp-evm",
+ "tiny-keccak",
+]
+
+[[package]]
+name = "pallet-evm-precompile-simple"
+version = "2.0.0-dev"
+source = "git+https://github.com/selendra/frontier?branch=polkadot-v0.9.33#1e6ea2f2958c6a264db7495d86feeae8de4d9354"
+dependencies = [
+ "fp-evm",
+ "ripemd",
+ "sp-io",
+]
+
+[[package]]
+name = "pallet-evm-precompile-sr25519"
+version = "0.1.0"
+dependencies = [
+ "derive_more",
+ "fp-evm",
+ "frame-support",
+ "frame-system",
+ "hex-literal",
+ "log",
+ "num_enum",
+ "pallet-balances",
+ "pallet-evm",
+ "pallet-timestamp",
+ "parity-scale-codec",
+ "precompile-utils",
+ "scale-info",
+ "serde",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
+name = "pallet-evm-precompile-substrate-ecdsa"
+version = "0.1.0"
+dependencies = [
+ "derive_more",
+ "fp-evm",
+ "frame-support",
+ "frame-system",
+ "hex-literal",
+ "log",
+ "num_enum",
+ "pallet-balances",
+ "pallet-evm",
+ "pallet-timestamp",
+ "parity-scale-codec",
+ "precompile-utils",
+ "scale-info",
+ "serde",
+ "sp-core",
+ "sp-io",
  "sp-runtime",
  "sp-std",
 ]
@@ -5370,7 +5833,7 @@ dependencies = [
 [[package]]
 name = "parachain-info"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
 dependencies = [
  "forest-primitives-core",
  "frame-support",
@@ -5381,8 +5844,7 @@ dependencies = [
 
 [[package]]
 name = "parachains-common"
-version = "1.0.0"
-source = "git+https://github.com/selendra/forest?branch=master#b0c382750f93a722049656e3691654b558eee141"
+version = "0.3.0"
 dependencies = [
  "forest-primitives-utility",
  "frame-support",
@@ -5465,8 +5927,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0d32c34f4f5ca7f9196001c0aba5a1f9a5a12382c8944b8b0f90233282d1e8f8"
 dependencies = [
  "cfg-if",
+ "ethereum-types",
  "hashbrown",
  "impl-trait-for-tuples",
+ "lru",
  "parity-util-mem-derive",
  "parking_lot 0.12.1",
  "primitive-types",
@@ -5741,6 +6205,40 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
 
 [[package]]
+name = "precompile-utils"
+version = "0.1.0"
+dependencies = [
+ "evm",
+ "fp-evm",
+ "frame-support",
+ "frame-system",
+ "hex-literal",
+ "impl-trait-for-tuples",
+ "log",
+ "num_enum",
+ "pallet-evm",
+ "parity-scale-codec",
+ "precompile-utils-macro",
+ "sha3 0.10.6",
+ "similar-asserts",
+ "sp-core",
+ "sp-io",
+ "sp-runtime",
+ "sp-std",
+]
+
+[[package]]
+name = "precompile-utils-macro"
+version = "0.1.0"
+dependencies = [
+ "num_enum",
+ "proc-macro2",
+ "quote",
+ "sha3 0.8.2",
+ "syn 1.0.107",
+]
+
+[[package]]
 name = "predicates"
 version = "2.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5788,6 +6286,7 @@ checksum = "9f3486ccba82358b11a77516035647c34ba167dfa53312630de83b12bd4f3d66"
 dependencies = [
  "fixed-hash",
  "impl-codec",
+ "impl-rlp",
  "impl-serde",
  "scale-info",
  "uint",
@@ -6251,6 +6750,37 @@ dependencies = [
  "untrusted",
  "web-sys",
  "winapi",
+]
+
+[[package]]
+name = "ripemd"
+version = "0.1.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bd124222d17ad93a644ed9d011a40f4fb64aa54275c08cc216524a9ea82fb09f"
+dependencies = [
+ "digest 0.10.6",
+]
+
+[[package]]
+name = "rlp"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bb919243f34364b6bd2fc10ef797edbfa75f33c252e7998527479c6d6b47e1ec"
+dependencies = [
+ "bytes",
+ "rlp-derive",
+ "rustc-hex",
+]
+
+[[package]]
+name = "rlp-derive"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e33d7b2abe0c340d8797fe2907d3f20d3b5ea5908683618bfe80df7f621f672a"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 1.0.107",
 ]
 
 [[package]]
@@ -8811,6 +9341,19 @@ dependencies = [
 
 [[package]]
 name = "sha3"
+version = "0.8.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dd26bc0e7a2e3a7c959bc494caf58b72ee0c71d67704e9520f736ca7e4853ecf"
+dependencies = [
+ "block-buffer 0.7.3",
+ "byte-tools",
+ "digest 0.8.1",
+ "keccak",
+ "opaque-debug 0.2.3",
+]
+
+[[package]]
+name = "sha3"
 version = "0.10.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bdf0c33fae925bdc080598b84bc15c55e7b9a4a43b3c704da051f977469691c9"
@@ -8873,6 +9416,26 @@ dependencies = [
  "num-complex",
  "num-traits",
  "paste",
+]
+
+[[package]]
+name = "similar"
+version = "2.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "420acb44afdae038210c99e69aae24109f32f15500aa708e81d46c9f29d55fcf"
+dependencies = [
+ "bstr 0.2.17",
+ "unicode-segmentation",
+]
+
+[[package]]
+name = "similar-asserts"
+version = "1.4.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bbf644ad016b75129f01a34a355dcb8d66a5bc803e417c7a77cc5d5ee9fa0f18"
+dependencies = [
+ "console",
+ "similar",
 ]
 
 [[package]]
@@ -9226,7 +9789,7 @@ dependencies = [
  "byteorder",
  "digest 0.10.6",
  "sha2 0.10.6",
- "sha3",
+ "sha3 0.10.6",
  "sp-std",
  "twox-hash",
 ]
@@ -9844,6 +10407,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "substrate-bn"
+version = "0.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "72b5bbfa79abbae15dd642ea8176a21a635ff3c00059961d1ea27ad04e5b441c"
+dependencies = [
+ "byteorder",
+ "crunchy",
+ "lazy_static",
+ "rand 0.8.5",
+ "rustc-hex",
+]
+
+[[package]]
 name = "substrate-frame-rpc-system"
 version = "4.0.0-dev"
 source = "git+https://github.com/paritytech/substrate?branch=polkadot-v0.9.33#2dff067e9f7f6f3cc4dbfdaaa97753eccc407689"
@@ -10114,6 +10690,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "tiny-keccak"
+version = "2.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2c9d3793400a45f954c52e73d068316d76b6f4e36977e3fcebb13a2721e80237"
+dependencies = [
+ "crunchy",
+]
+
+[[package]]
 name = "tinyvec"
 version = "1.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -10344,6 +10929,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "triehash"
+version = "0.8.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a1631b201eb031b563d2e85ca18ec8092508e262a3196ce9bd10a67ec87b9f5c"
+dependencies = [
+ "hash-db",
+ "rlp",
+]
+
+[[package]]
 name = "trust-dns-proto"
 version = "0.22.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -10463,6 +11058,12 @@ checksum = "5c5713f0fc4b5db668a2ac63cdb7bb4469d8c9fed047b1d0292cc7b0ce2ba921"
 dependencies = [
  "tinyvec",
 ]
+
+[[package]]
+name = "unicode-segmentation"
+version = "1.10.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1dd624098567895118886609431a7c3b8f516e41d30e0643f03d94592a147e36"
 
 [[package]]
 name = "unicode-width"
