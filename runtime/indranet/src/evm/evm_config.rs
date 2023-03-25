@@ -15,11 +15,11 @@
 // along with this program. If not, see <https://www.gnu.org/licenses/>.
 use super::precompiles::SelendraNetworkPrecompiles;
 use crate::{
-	sp_api_hidden_includes_construct_runtime::hidden_include::dispatch::Dispatchable, AccountId,
-	Aura, Balance, Balances, BaseFee, Runtime, RuntimeCall, RuntimeEvent, RuntimeOrigin, Signature,
-	Weight, MAXIMUM_BLOCK_WEIGHT, NORMAL_DISPATCH_RATIO, opaque, UncheckedExtrinsic
+	opaque, sp_api_hidden_includes_construct_runtime::hidden_include::dispatch::Dispatchable,
+	AccountId, Aura, Balance, Balances, BaseFee, Runtime, RuntimeCall, RuntimeEvent, RuntimeOrigin,
+	Signature, UncheckedExtrinsic, Weight, MAXIMUM_BLOCK_WEIGHT, NORMAL_DISPATCH_RATIO,
 };
-use codec::{Encode, Decode};
+use codec::{Decode, Encode};
 pub use selendra_runtime_constants::currency::{MILLICENTS, UNITS};
 
 use frame_support::{

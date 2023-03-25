@@ -16,5 +16,7 @@
 
 //! Indranet collator library.
 
-mod rpc;
 mod chain_spec;
+mod rpc;
+mod service;
+mod shell_upgrade;
