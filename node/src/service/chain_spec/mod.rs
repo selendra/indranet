@@ -21,6 +21,7 @@ use sp_core::{Pair, Public};
 use sp_runtime::traits::{IdentifyAccount, Verify};
 
 pub mod indranet;
+pub use indranet::IndranetChainSpec;
 
 /// The default XCM version to set in genesis config.
 const SAFE_XCM_VERSION: u32 = xcm::prelude::XCM_VERSION;

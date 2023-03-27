@@ -17,6 +17,10 @@
 // along with Indranet. If not, see <http://www.gnu.org/licenses/>.
 
 //! Parachain Service and ServiceFactory implementation.
+
+pub mod chain_spec;
+mod shell_upgrade;
+
 use fc_consensus::FrontierBlockImport;
 use fc_rpc_core::types::{FeeHistoryCache, FilterPool};
 use forest_client_cli::CollatorOptions;
@@ -31,7 +35,7 @@ use forest_primitives_core::ParaId;
 use forest_relay_chain_inprocess_interface::build_inprocess_relay_chain;
 use forest_relay_chain_interface::{RelayChainError, RelayChainInterface, RelayChainResult};
 use forest_relay_chain_minimal_node::build_minimal_relay_chain_node;
-use futures::{lock::Mutex, StreamExt};
+use futures::StreamExt;
 use sc_client_api::BlockchainEvents;
 use sc_consensus::import_queue::BasicQueue;
 use sc_executor::NativeElseWasmExecutor;
@@ -45,7 +49,7 @@ use sp_runtime::traits::BlakeTwo256;
 use std::{collections::BTreeMap, sync::Arc, time::Duration};
 use substrate_prometheus_endpoint::Registry;
 
-use super::shell_upgrade::*;
+use shell_upgrade::*;
 use parachains_common::{AccountId, AuraId, Balance, Block, Hash, Index as Nonce};
 
 /// Indranet network runtime executor.

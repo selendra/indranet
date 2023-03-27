@@ -16,7 +16,11 @@
 
 //! Indranet collator library.
 
-mod chain_spec;
 mod rpc;
 mod service;
-mod shell_upgrade;
+mod cli;
+mod command;
+
+
+pub use cli::*;
+pub use command::*;
