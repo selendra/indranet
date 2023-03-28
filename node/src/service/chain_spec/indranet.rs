@@ -40,7 +40,7 @@ pub fn indranet_development_config() -> IndranetChainSpec {
 	let mut properties = sc_chain_spec::Properties::new();
 	properties.insert("ss58Format".into(), 204.into());
 	properties.insert("tokenSymbol".into(), "SEL".into());
-	properties.insert("tokenDecimals".into(), 12.into());
+	properties.insert("tokenDecimals".into(), 18.into());
 	let sudo_key = get_account_id_from_seed::<sr25519::Public>("Alice");
 
 	IndranetChainSpec::from_genesis(
@@ -71,7 +71,7 @@ pub fn indranet_development_config() -> IndranetChainSpec {
 		None,
 		None,
 		Some(properties),
-		Extensions { relay_chain: "kusama-dev".into(), para_id: 1000 },
+		Extensions { relay_chain: "selendra-dev".into(), para_id: 1000 },
 	)
 }
 

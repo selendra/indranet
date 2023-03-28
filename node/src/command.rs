@@ -45,7 +45,7 @@ use frame_benchmarking_cli::{BenchmarkCmd, SUBSTRATE_REFERENCE_HARDWARE};
 fn load_spec(id: &str) -> std::result::Result<Box<dyn sc_service::ChainSpec>, String> {
     Ok(match id {
         "indranet-dev" => Box::new(chain_spec::indranet::indranet_development_config()),
-        "indranet" => Box::new(chain_spec::IndranetChainSpec::from_json_bytes(
+        "indranet" | "" => Box::new(chain_spec::IndranetChainSpec::from_json_bytes(
             &include_bytes!("../res/indranet.raw.json")[..],
         )?),
         path => {
@@ -132,6 +132,11 @@ impl SubstrateCli for RelayChainCli {
     }
 }
 
+fn set_default_ss58_version() {
+	let ss58_version = sp_core::crypto::Ss58AddressFormat::custom(204);
+	sp_core::crypto::set_default_ss58_version(ss58_version);
+}
+
 /// Parse command line arguments into service configuration.
 pub fn run() -> Result<()> {
     let cli = Cli::from_args();
@@ -153,6 +158,9 @@ pub fn run() -> Result<()> {
                     &config,
                     service::build_import_queue,
                 )?;
+
+                set_default_ss58_version();
+
                 Ok((cmd.run(client, import_queue), task_manager))
             })
         }
@@ -167,6 +175,9 @@ pub fn run() -> Result<()> {
                     &config,
                     service::build_import_queue,
                 )?;
+
+                set_default_ss58_version();
+
                 Ok((cmd.run(client, config.database), task_manager))
             })
         }
@@ -181,6 +192,9 @@ pub fn run() -> Result<()> {
                     &config,
                     service::build_import_queue,
                 )?;
+
+                set_default_ss58_version();
+
                 Ok((cmd.run(client, config.chain_spec), task_manager))
             })
         }
@@ -196,6 +210,9 @@ pub fn run() -> Result<()> {
                     &config,
                     service::build_import_queue,
                 )?;
+
+                set_default_ss58_version();
+
                 Ok((cmd.run(client, import_queue), task_manager))
             })
         }
@@ -214,6 +231,8 @@ pub fn run() -> Result<()> {
                     config.tokio_handle.clone(),
                 )
                 .map_err(|err| format!("Relay chain argument error: {}", err))?;
+
+                set_default_ss58_version();
 
                 cmd.run(config, selendra_config)
             })
@@ -234,11 +253,16 @@ pub fn run() -> Result<()> {
                     sc_finality_grandpa::revert(client, blocks)?;
                     Ok(())
                 });
+
+                set_default_ss58_version();
+
                 Ok((cmd.run(client, backend, Some(aux_revert)), task_manager))
             })
         }
         Some(Subcommand::ExportGenesisState(cmd)) => {
             let runner = cli.create_runner(cmd)?;
+
+			set_default_ss58_version();
 
             runner.sync_run(|_config| {
                 let spec = cli.load_spec(&cmd.shared_params.chain.clone().unwrap_or_default())?;
@@ -248,6 +272,8 @@ pub fn run() -> Result<()> {
         }
         Some(Subcommand::ExportGenesisWasm(cmd)) => {
             let runner = cli.create_runner(cmd)?;
+
+			set_default_ss58_version();
 
             runner.sync_run(|_config| {
                 let spec = cli.load_spec(&cmd.shared_params.chain.clone().unwrap_or_default())?;
@@ -262,6 +288,8 @@ pub fn run() -> Result<()> {
         Some(Subcommand::Benchmark(cmd)) => {
             let runner = cli.create_runner(cmd)?;
             let chain_spec = &runner.config().chain_spec;
+            
+			set_default_ss58_version();
 
             match cmd {
                 BenchmarkCmd::Pallet(cmd) => {
@@ -304,6 +332,8 @@ pub fn run() -> Result<()> {
             let runner = cli.create_runner(cmd)?;
             let chain_spec = &runner.config().chain_spec;
 
+			set_default_ss58_version();
+
             use sc_executor::{sp_wasm_interface::ExtendedHostFunctions, NativeExecutionDispatch};
             type HostFunctionsOf<E> = ExtendedHostFunctions<
                 sp_io::SubstrateHostFunctions,
@@ -325,6 +355,8 @@ pub fn run() -> Result<()> {
         None => {
             let runner = cli.create_runner(&cli.run.normalize())?;
             let collator_options = cli.run.collator_options();
+
+			set_default_ss58_version();
 
             runner.run_node_until_exit(|config| async move {
                 let selendra_cli = RelayChainCli::new(
