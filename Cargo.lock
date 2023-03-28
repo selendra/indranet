@@ -2174,7 +2174,7 @@ checksum = "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
 [[package]]
 name = "forest-client-cli"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "clap",
  "parity-scale-codec",
@@ -2189,7 +2189,7 @@ dependencies = [
 [[package]]
 name = "forest-client-collator"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "forest-client-consensus-common",
  "forest-client-network",
@@ -2212,7 +2212,7 @@ dependencies = [
 [[package]]
 name = "forest-client-consensus-aura"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "async-trait",
  "forest-client-consensus-common",
@@ -2241,7 +2241,7 @@ dependencies = [
 [[package]]
 name = "forest-client-consensus-common"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "async-trait",
  "dyn-clone",
@@ -2261,7 +2261,7 @@ dependencies = [
 [[package]]
 name = "forest-client-consensus-relay-chain"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "async-trait",
  "forest-client-consensus-common",
@@ -2284,7 +2284,7 @@ dependencies = [
 [[package]]
 name = "forest-client-network"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "async-trait",
  "forest-relay-chain-interface",
@@ -2307,7 +2307,7 @@ dependencies = [
 [[package]]
 name = "forest-client-pov-recovery"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "forest-primitives-core",
  "forest-relay-chain-interface",
@@ -2330,7 +2330,7 @@ dependencies = [
 [[package]]
 name = "forest-client-service"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "forest-client-cli",
  "forest-client-collator",
@@ -2353,7 +2353,7 @@ dependencies = [
 [[package]]
 name = "forest-pallet-aura-ext"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -2369,7 +2369,7 @@ dependencies = [
 [[package]]
 name = "forest-pallet-dmp-queue"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "forest-primitives-core",
  "frame-support",
@@ -2386,7 +2386,7 @@ dependencies = [
 [[package]]
 name = "forest-pallet-parachain-system"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "bytes",
  "environmental",
@@ -2414,7 +2414,7 @@ dependencies = [
 [[package]]
 name = "forest-pallet-parachain-system-proc-macro"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "proc-macro-crate",
  "proc-macro2",
@@ -2425,7 +2425,7 @@ dependencies = [
 [[package]]
 name = "forest-pallet-session-benchmarking"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -2439,7 +2439,7 @@ dependencies = [
 [[package]]
 name = "forest-pallet-xcm"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "forest-primitives-core",
  "frame-support",
@@ -2455,7 +2455,7 @@ dependencies = [
 [[package]]
 name = "forest-pallet-xcmp-queue"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "forest-primitives-core",
  "frame-benchmarking",
@@ -2474,7 +2474,7 @@ dependencies = [
 [[package]]
 name = "forest-primitives-core"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "parity-scale-codec",
  "selendra-core-primitives",
@@ -2489,7 +2489,7 @@ dependencies = [
 [[package]]
 name = "forest-primitives-parachain-inherent"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "async-trait",
  "forest-primitives-core",
@@ -2512,7 +2512,7 @@ dependencies = [
 [[package]]
 name = "forest-primitives-timestamp"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "forest-primitives-core",
  "futures",
@@ -2525,7 +2525,7 @@ dependencies = [
 [[package]]
 name = "forest-primitives-utility"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "forest-primitives-core",
  "frame-support",
@@ -2541,7 +2541,7 @@ dependencies = [
 [[package]]
 name = "forest-relay-chain-inprocess-interface"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "async-trait",
  "forest-primitives-core",
@@ -2566,7 +2566,7 @@ dependencies = [
 [[package]]
 name = "forest-relay-chain-interface"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "async-trait",
  "forest-primitives-core",
@@ -2585,7 +2585,7 @@ dependencies = [
 [[package]]
 name = "forest-relay-chain-minimal-node"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "array-bytes",
  "async-trait",
@@ -2629,7 +2629,7 @@ dependencies = [
 [[package]]
 name = "forest-relay-chain-rpc-interface"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "async-trait",
  "backoff",
@@ -2657,7 +2657,7 @@ dependencies = [
 [[package]]
 name = "forest-test-relay-sproof-builder"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "forest-primitives-core",
  "parity-scale-codec",
@@ -5557,7 +5557,7 @@ dependencies = [
 [[package]]
 name = "pallet-collator-selection"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -6399,8 +6399,8 @@ dependencies = [
 
 [[package]]
 name = "pallet-xcm"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -6417,8 +6417,8 @@ dependencies = [
 
 [[package]]
 name = "pallet-xcm-benchmarks"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -6435,7 +6435,7 @@ dependencies = [
 [[package]]
 name = "parachain-info"
 version = "0.1.0"
-source = "git+https://github.com/selendra/forest?branch=master#6bd464fb8e1310b698f15d2b1181469e60e8f50d"
+source = "git+https://github.com/selendra/forest?branch=release-0.3.0#aa5e4de835197d93a0cd59b26642ee1b36c924bc"
 dependencies = [
  "forest-primitives-core",
  "frame-support",
@@ -8808,8 +8808,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-approval-distribution"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "futures",
  "rand 0.8.5",
@@ -8823,8 +8823,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-availability-bitfield-distribution"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "futures",
  "rand 0.8.5",
@@ -8837,8 +8837,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-availability-distribution"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "derive_more",
  "fatality",
@@ -8860,8 +8860,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-availability-recovery"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "fatality",
  "futures",
@@ -8881,8 +8881,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-cli"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "clap",
  "frame-benchmarking-cli",
@@ -8907,8 +8907,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-client"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "beefy-primitives",
  "frame-benchmarking",
@@ -8947,8 +8947,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-collator-protocol"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "always-assert",
  "bitvec",
@@ -8969,8 +8969,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-core-primitives"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "parity-scale-codec",
  "parity-util-mem",
@@ -8982,8 +8982,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-dispute-distribution"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "derive_more",
  "fatality",
@@ -9007,8 +9007,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-erasure-coding"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "parity-scale-codec",
  "reed-solomon-novelpoly",
@@ -9021,8 +9021,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-gossip-support"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "futures",
  "futures-timer",
@@ -9041,8 +9041,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-network-bridge"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "always-assert",
  "async-trait",
@@ -9065,8 +9065,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-collation-generation"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "futures",
  "parity-scale-codec",
@@ -9083,8 +9083,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-core-approval-voting"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "bitvec",
  "derive_more",
@@ -9112,8 +9112,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-core-av-store"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "bitvec",
  "futures",
@@ -9132,8 +9132,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-core-backing"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "bitvec",
  "fatality",
@@ -9151,8 +9151,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-core-bitfield-signing"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "futures",
  "selendra-node-subsystem",
@@ -9166,8 +9166,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-core-candidate-validation"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "async-trait",
  "futures",
@@ -9185,8 +9185,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-core-chain-api"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "futures",
  "sc-client-api",
@@ -9200,8 +9200,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-core-chain-selection"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "futures",
  "futures-timer",
@@ -9217,8 +9217,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-core-dispute-coordinator"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "fatality",
  "futures",
@@ -9236,8 +9236,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-core-parachains-inherent"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "async-trait",
  "futures",
@@ -9253,8 +9253,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-core-provisioner"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "bitvec",
  "fatality",
@@ -9271,8 +9271,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-core-pvf"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "always-assert",
  "assert_matches",
@@ -9303,8 +9303,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-core-pvf-checker"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "futures",
  "selendra-node-primitives",
@@ -9319,8 +9319,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-core-runtime-api"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "futures",
  "memory-lru",
@@ -9335,8 +9335,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-jaeger"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "async-std",
  "lazy_static",
@@ -9353,8 +9353,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-metrics"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "bs58",
  "futures",
@@ -9372,8 +9372,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-network-protocol"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "async-trait",
  "derive_more",
@@ -9395,8 +9395,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-primitives"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "bounded-vec",
  "futures",
@@ -9417,8 +9417,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-subsystem"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "selendra-node-jaeger",
  "selendra-node-subsystem-types",
@@ -9427,8 +9427,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-subsystem-types"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "async-trait",
  "derive_more",
@@ -9450,8 +9450,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-node-subsystem-util"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "async-trait",
  "derive_more",
@@ -9483,8 +9483,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-overseer"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "async-trait",
  "futures",
@@ -9506,8 +9506,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-parachain"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "derive_more",
  "frame-support",
@@ -9523,8 +9523,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-performance-test"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "env_logger 0.9.3",
  "log",
@@ -9538,8 +9538,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-primitives"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "bitvec",
  "hex-literal",
@@ -9565,8 +9565,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-rpc"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "beefy-gadget",
  "beefy-gadget-rpc",
@@ -9597,8 +9597,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-runtime"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "beefy-primitives",
  "bitvec",
@@ -9688,8 +9688,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-runtime-common"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "beefy-primitives",
  "bitvec",
@@ -9736,8 +9736,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-runtime-constants"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "frame-support",
  "selendra-primitives",
@@ -9750,8 +9750,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-runtime-metrics"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "bs58",
  "parity-scale-codec",
@@ -9762,8 +9762,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-runtime-parachains"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "bitflags 1.3.2",
  "bitvec",
@@ -9805,8 +9805,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-service"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "async-trait",
  "beefy-gadget",
@@ -9906,8 +9906,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-statement-distribution"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "arrayvec 0.5.2",
  "fatality",
@@ -9927,8 +9927,8 @@ dependencies = [
 
 [[package]]
 name = "selendra-statement-table"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "parity-scale-codec",
  "selendra-primitives",
@@ -10170,8 +10170,8 @@ checksum = "03b634d87b960ab1a38c4fe143b508576f075e7c978bfad18217645ebfdfa2ec"
 
 [[package]]
 name = "slot-range-helper"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "enumn",
  "parity-scale-codec",
@@ -11592,8 +11592,8 @@ dependencies = [
 
 [[package]]
 name = "tracing-gum"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "selendra-node-jaeger",
  "selendra-primitives",
@@ -11603,8 +11603,8 @@ dependencies = [
 
 [[package]]
 name = "tracing-gum-proc-macro"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "expander 0.0.6",
  "proc-macro-crate",
@@ -12590,8 +12590,8 @@ dependencies = [
 
 [[package]]
 name = "xcm"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "derivative",
  "impl-trait-for-tuples",
@@ -12604,8 +12604,8 @@ dependencies = [
 
 [[package]]
 name = "xcm-builder"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -12624,8 +12624,8 @@ dependencies = [
 
 [[package]]
 name = "xcm-executor"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -12642,8 +12642,8 @@ dependencies = [
 
 [[package]]
 name = "xcm-procedural"
-version = "0.2.7"
-source = "git+https://github.com/selendra/selendra?branch=master#5d27b6d08cfab7c82f94e36c7701106d3191f5cf"
+version = "0.3.0"
+source = "git+https://github.com/selendra/selendra?branch=release-0.3.0#5320aad359d01489a7a128fff3e3f3827567b67d"
 dependencies = [
  "Inflector",
  "proc-macro2",

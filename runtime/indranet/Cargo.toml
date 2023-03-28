@@ -50,30 +50,30 @@ pallet-sudo = { git = "https://github.com/paritytech/substrate", branch = "polka
 
 
 # Selendra
-selendra-runtime-constants = { git = "https://github.com/selendra/selendra", branch = "master", default-features = false }
-selendra-core-primitives = { git = "https://github.com/selendra/selendra", branch = "master", default-features = false }
-selendra-parachain = { git = "https://github.com/selendra/selendra", branch = "master", default-features = false }
-selendra-runtime-common = { git = "https://github.com/selendra/selendra", branch = "master", default-features = false }
+selendra-runtime-constants = { git = "https://github.com/selendra/selendra", branch = "release-0.3.0", default-features = false }
+selendra-core-primitives = { git = "https://github.com/selendra/selendra", branch = "release-0.3.0", default-features = false }
+selendra-parachain = { git = "https://github.com/selendra/selendra", branch = "release-0.3.0", default-features = false }
+selendra-runtime-common = { git = "https://github.com/selendra/selendra", branch = "release-0.3.0", default-features = false }
 
 # Selendra Xcm
-pallet-xcm = { git = "https://github.com/selendra/selendra", branch = "master", default-features = false }
-pallet-xcm-benchmarks = { git = "https://github.com/selendra/selendra", branch = "master", default-features = false, optional = true }
-xcm = { git = "https://github.com/selendra/selendra", branch = "master", default-features = false }
-xcm-builder = { git = "https://github.com/selendra/selendra", branch = "master", default-features = false }
-xcm-executor = { git = "https://github.com/selendra/selendra", branch = "master", default-features = false }
+pallet-xcm = { git = "https://github.com/selendra/selendra", branch = "release-0.3.0", default-features = false }
+pallet-xcm-benchmarks = { git = "https://github.com/selendra/selendra", branch = "release-0.3.0", default-features = false, optional = true }
+xcm = { git = "https://github.com/selendra/selendra", branch = "release-0.3.0", default-features = false }
+xcm-builder = { git = "https://github.com/selendra/selendra", branch = "release-0.3.0", default-features = false }
+xcm-executor = { git = "https://github.com/selendra/selendra", branch = "release-0.3.0", default-features = false }
 
 # Forest
-pallet-collator-selection = { git = "https://github.com/selendra/forest", branch = "master", default-features = false }
-parachain-info = { git = "https://github.com/selendra/forest", branch = "master", default-features = false }
-forest-pallet-aura-ext = { git = "https://github.com/selendra/forest", branch = "master", default-features = false }
-forest-pallet-dmp-queue = { git = "https://github.com/selendra/forest", branch = "master", default-features = false }
-forest-pallet-parachain-system = { git = "https://github.com/selendra/forest", branch = "master", default-features = false }
-forest-pallet-session-benchmarking = { git = "https://github.com/selendra/forest", branch = "master", default-features = false }
-forest-pallet-xcm = { git = "https://github.com/selendra/forest", branch = "master", default-features = false }
-forest-pallet-xcmp-queue = { git = "https://github.com/selendra/forest", branch = "master", default-features = false }
-forest-primitives-core = { git = "https://github.com/selendra/forest", branch = "master", default-features = false }
-forest-primitives-timestamp = { git = "https://github.com/selendra/forest", branch = "master", default-features = false }
-forest-primitives-utility = { git = "https://github.com/selendra/forest", branch = "master", default-features = false }
+pallet-collator-selection = { git = "https://github.com/selendra/forest", branch = "release-0.3.0", default-features = false }
+parachain-info = { git = "https://github.com/selendra/forest", branch = "release-0.3.0", default-features = false }
+forest-pallet-aura-ext = { git = "https://github.com/selendra/forest", branch = "release-0.3.0", default-features = false }
+forest-pallet-dmp-queue = { git = "https://github.com/selendra/forest", branch = "release-0.3.0", default-features = false }
+forest-pallet-parachain-system = { git = "https://github.com/selendra/forest", branch = "release-0.3.0", default-features = false }
+forest-pallet-session-benchmarking = { git = "https://github.com/selendra/forest", branch = "release-0.3.0", default-features = false }
+forest-pallet-xcm = { git = "https://github.com/selendra/forest", branch = "release-0.3.0", default-features = false }
+forest-pallet-xcmp-queue = { git = "https://github.com/selendra/forest", branch = "release-0.3.0", default-features = false }
+forest-primitives-core = { git = "https://github.com/selendra/forest", branch = "release-0.3.0", default-features = false }
+forest-primitives-timestamp = { git = "https://github.com/selendra/forest", branch = "release-0.3.0", default-features = false }
+forest-primitives-utility = { git = "https://github.com/selendra/forest", branch = "release-0.3.0", default-features = false }
 
 # Frontier
 fp-rpc = { git = "https://github.com/selendra/frontier", branch = "polkadot-v0.9.33", default-features = false }

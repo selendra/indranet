@@ -91,25 +91,25 @@ substrate-frame-rpc-system = { version = "4.0.0-dev", git = "https://github.com/
 sc-cli = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.33", optional = true }
 
 # forest dependencies
-forest-client-cli = { git = "https://github.com/selendra/forest", branch = "master" }
-forest-client-consensus-aura = { git = "https://github.com/selendra/forest", branch = "master" }
-forest-client-consensus-common = { git = "https://github.com/selendra/forest", branch = "master" }
-forest-client-consensus-relay-chain = { git = "https://github.com/selendra/forest", branch = "master" }
-forest-client-network = { git = "https://github.com/selendra/forest", branch = "master" }
-forest-client-service = { git = "https://github.com/selendra/forest", branch = "master" }
-forest-primitives-core = { git = "https://github.com/selendra/forest", branch = "master" }
-forest-primitives-parachain-inherent = { git = "https://github.com/selendra/forest", branch = "master" }
-forest-relay-chain-inprocess-interface = { git = "https://github.com/selendra/forest", branch = "master" }
-forest-relay-chain-interface = { git = "https://github.com/selendra/forest", branch = "master" }
-forest-relay-chain-minimal-node = { git = "https://github.com/selendra/forest", branch = "master" }
-forest-relay-chain-rpc-interface = { git = "https://github.com/selendra/forest", branch = "master" }
+forest-client-cli = { git = "https://github.com/selendra/forest", branch = "release-0.3.0" }
+forest-client-consensus-aura = { git = "https://github.com/selendra/forest", branch = "release-0.3.0" }
+forest-client-consensus-common = { git = "https://github.com/selendra/forest", branch = "release-0.3.0" }
+forest-client-consensus-relay-chain = { git = "https://github.com/selendra/forest", branch = "release-0.3.0" }
+forest-client-network = { git = "https://github.com/selendra/forest", branch = "release-0.3.0" }
+forest-client-service = { git = "https://github.com/selendra/forest", branch = "release-0.3.0" }
+forest-primitives-core = { git = "https://github.com/selendra/forest", branch = "release-0.3.0" }
+forest-primitives-parachain-inherent = { git = "https://github.com/selendra/forest", branch = "release-0.3.0" }
+forest-relay-chain-inprocess-interface = { git = "https://github.com/selendra/forest", branch = "release-0.3.0" }
+forest-relay-chain-interface = { git = "https://github.com/selendra/forest", branch = "release-0.3.0" }
+forest-relay-chain-minimal-node = { git = "https://github.com/selendra/forest", branch = "release-0.3.0" }
+forest-relay-chain-rpc-interface = { git = "https://github.com/selendra/forest", branch = "release-0.3.0" }
 
 # Selendra dependencies
-selendra-cli = { git = "https://github.com/selendra/selendra", branch = "master", optional = true }
-selendra-parachain = { git = "https://github.com/selendra/selendra", branch = "master" }
-selendra-primitives = { git = "https://github.com/selendra/selendra", branch = "master" }
-selendra-service = { git = "https://github.com/selendra/selendra", branch = "master" }
-xcm = { git = "https://github.com/selendra/selendra", branch = "master" }
+selendra-cli = { git = "https://github.com/selendra/selendra", branch = "release-0.3.0", optional = true }
+selendra-parachain = { git = "https://github.com/selendra/selendra", branch = "release-0.3.0" }
+selendra-primitives = { git = "https://github.com/selendra/selendra", branch = "release-0.3.0" }
+selendra-service = { git = "https://github.com/selendra/selendra", branch = "release-0.3.0" }
+xcm = { git = "https://github.com/selendra/selendra", branch = "release-0.3.0" }
 
 # benchmark dependencies
 frame-benchmarking = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.33", optional = true }
@@ -123,7 +123,7 @@ try-runtime-cli = { git = "https://github.com/paritytech/substrate", branch = "p
 build-script-utils = { package = "substrate-build-script-utils", git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.33" }
 sc-cli = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.33", optional = true }
 sc-service = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.33", optional = true }
-selendra-cli = { git = "https://github.com/selendra/selendra", branch = "master", optional = true }
+selendra-cli = { git = "https://github.com/selendra/selendra", branch = "release-0.3.0", optional = true }
 
 [features]
 default = ["sc-cli", "selendra-cli", "sc-service", "sc-service/rocksdb"]
