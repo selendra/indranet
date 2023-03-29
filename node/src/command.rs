@@ -46,7 +46,10 @@ fn load_spec(id: &str) -> std::result::Result<Box<dyn sc_service::ChainSpec>, St
     Ok(match id {
         "indranet-dev" => Box::new(chain_spec::indranet::indranet_development_config()),
         "indranet" | "" => Box::new(chain_spec::IndranetChainSpec::from_json_bytes(
-            &include_bytes!("../res/indranet.raw.json")[..],
+            &include_bytes!("../res/indranet.json")[..],
+        )?),
+        "indranet-testnet"=> Box::new(chain_spec::IndranetChainSpec::from_json_bytes(
+            &include_bytes!("../res/indranet-testnet.json")[..],
         )?),
         path => {
             Box::new(chain_spec::IndranetChainSpec::from_json_file(path.into())?)
